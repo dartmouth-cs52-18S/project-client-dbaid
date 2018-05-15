@@ -1,0 +1,16 @@
+{
+  "presets": ["babel-preset-expo", "flow"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "assets": "./assets",
+          "app": "./src"
+        }
+      }
+    ],
+    "transform-react-jsx-source"
+  ]
+}
