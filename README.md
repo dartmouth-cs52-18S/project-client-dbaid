@@ -12,7 +12,11 @@ TODO: how to get the project dev environment up and running, npm install etc
 
 ## Deployment
 
-TODO: how to deploy the project
+Front-End Client
+Our project is built on Expo, which allows for rapid deployment to devices. 
+1. Download the Expo App on your mobile device.
+2. Run `exp start` from the project directory to run the project.
+3. Run `exp send -s <your-phone-number-or-email>` in your project directory in another terminal window to send the URL to your device.
 
 ## Authors
 
