@@ -5,7 +5,7 @@
 Using a starter pack from Naman Aulakh, located at https://github.com/NamanAulakh/react-native-expo-starter-kit.
 This contains eslint, babel, redux and redux-thunk, expo (which will come in handy)
 along with other libraries. This gives us a hello world to get started with react native
-development. 
+development.
 
 TODO: short project description, some sample screenshots or mockups
 
@@ -15,12 +15,14 @@ TODO:  descriptions of code organization and tools and libraries used
 
 ## Setup
 
-TODO: how to get the project dev environment up and running, npm install etc
+1. Clone the repo into your local environment
+2. Once cloned, `cd` into the directory and run `yarn` to install dependencies
+3. Run `exp start` and connect to your personal phone!
 
 ## Deployment
 
 Front-End Client
-Our project is built on Expo, which allows for rapid deployment to devices. 
+Our project is built on Expo, which allows for rapid deployment to devices.
 1. Download the Expo App on your mobile device.
 2. Run `exp start` from the project directory to run the project.
 3. Run `exp send -s <your-phone-number-or-email>` in your project directory in another terminal window to send the URL to your device.
