@@ -1,1 +1,8 @@
-export default { yo: 'yo' }
+const initialState = {
+  departure: '',
+  destination: '',
+  date: '',
+  time: '',
+}
+
+export default initialState
