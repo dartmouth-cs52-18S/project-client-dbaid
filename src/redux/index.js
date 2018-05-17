@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-import BookingReducer from './reducers/booking-reducer'
+import ListingsReducer from './reducers/listings_reducer'
 
 const reducers = combineReducers({
-  booking: BookingReducer,
+  listings: ListingsReducer,
 })
 
 const rootReducer = (state, action) => reducers(state, action)

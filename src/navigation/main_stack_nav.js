@@ -5,15 +5,15 @@ import { createStackNavigator } from 'react-navigation'
 
 // import VideoList from '../components/video_list';
 // import VideoDetail from '../components/video_detail';
-import Home from '../components/home'
-import Departure from '../components/screens/departure/departure'
+import Create from '../components/screens/createListing/createListing'
+import Landing from '../components/screens/landing/landing'
 
 
 // nest stack navigator to handle two internal views
 const MainNavigator = createStackNavigator({
   // keys are the names of the "routes"
-  Landing: Home,
-  From: Departure,
+  Landing,
+  Create,
 })
 
 
