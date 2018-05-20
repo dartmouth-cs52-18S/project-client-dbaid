@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { View, Button, TextInput } from 'react-native'
+import { TextField } from 'react-native-material-textfield'
+// import InputAdornme nt from 'material-ui/core/InputAdornment'
 import { connect } from 'react-redux'
 import { createListing } from '../../../redux/reducers/actions'
 
@@ -10,6 +12,7 @@ class Create extends Component {
     super(props)
     this.state = {
       description: '',
+      amount: 0,
     }
   }
 
@@ -23,6 +26,7 @@ class Create extends Component {
           onChangeText={text => this.setState({ description: text })}
           value={this.state.descripton}
         />
+
         <Button
           onPress={() => {
             this.props.createListing({ description: this.state.description },

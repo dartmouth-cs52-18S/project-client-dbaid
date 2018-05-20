@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { fetchListings } from '../../../redux/reducers/actions'
 
@@ -29,16 +29,19 @@ class Landing extends Component {
     }
     console.log(`listings: ${this.props.listings}`)
     return (
-      <View style={styles.root}>
+      <ScrollView style={styles.flatlist}>
+        <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
         <View style={styles.entry}>
-          <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
           {this.props.listings.map(listing => (
-            <View key={listing._id}>
+            <TouchableOpacity style={styles.entries} key={listing._id}>
+              <Image
+                source={require('../../../../assets/profileOne.png')}
+              />
               <Text> {listing.description} </Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }
