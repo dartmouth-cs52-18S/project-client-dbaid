@@ -37,7 +37,7 @@ class Landing extends Component {
               <Image
                 source={require('../../../../assets/profileOne.png')}
               />
-              <Text> {listing.description} </Text>
+              <Text> ${listing.amount} - {listing.location} </Text>
             </TouchableOpacity>
           ))}
         </View>

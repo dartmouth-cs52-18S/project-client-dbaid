@@ -1,5 +1,5 @@
 {
-  "presets": ["babel-preset-expo", "flow"],
+  "presets": ["babel-preset-expo", "es2015", "stage-0", "flow"],
   "plugins": [
     [
       "module-resolver",
