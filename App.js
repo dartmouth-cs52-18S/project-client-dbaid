@@ -6,6 +6,7 @@ import Root from './src'
 
 export default class App extends Component {
   render() {
+    global.self = global
     return (
       <Provider store={store}>
         <Root />
