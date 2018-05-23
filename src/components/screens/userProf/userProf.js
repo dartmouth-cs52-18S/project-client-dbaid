@@ -9,12 +9,17 @@ const UserProf = (props) => {
   const year = props.navigation.state.params.year
   return (
     <View style={styles.root}>
-      <Image
-        source={require('../../../../assets/profileOne.png')}
-      />
-      <Text style={styles.text}>{ name }</Text>
-      <Text style={styles.text}>{ year }</Text>
-      <Text style={styles.text}>{ bio }</Text>
+      <View style={styles.profile}>
+        <Image
+          style={styles.image}
+          source={require('../../../../assets/profileOne.png')}
+        />
+        <View style={styles.info}>
+          <Text style={styles.text}>{ name }</Text>
+          <Text style={styles.text}>{ year }</Text>
+        </View>
+      </View>
+      <Text style={styles.under}>{ bio }</Text>
     </View>
   )
 }
