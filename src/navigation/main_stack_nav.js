@@ -7,16 +7,14 @@ import { createStackNavigator } from 'react-navigation'
 // import VideoDetail from '../components/video_detail';
 import Create from '../components/screens/createListing/createListing'
 import Landing from '../components/screens/landing/landing'
-import AuthLanding from '../components/screens/authLanding/authLanding'
 
 
 // nest stack navigator to handle two internal views
-const MainNavigator = createStackNavigator({
+const MainStackNavigator = createStackNavigator({
   // keys are the names of the "routes"
-  AuthLanding,
   Landing,
   Create,
 })
 
 
-export default MainNavigator
+export default MainStackNavigator

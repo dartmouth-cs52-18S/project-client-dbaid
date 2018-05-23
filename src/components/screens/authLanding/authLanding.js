@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, Button, Image, Dimensions } from 'react-native'
+import { View, Button, Image, Dimensions } from 'react-native'
 import Carousel from 'react-native-looped-carousel'
 
-// import styles from './styles'
+import styles from './styles'
 
 const { width, height } = Dimensions.get('window')
 
@@ -22,8 +22,7 @@ class AuthLanding extends Component {
 
   render() {
     return (
-      <View>
-        <Text>dbAid</Text>
+      <View style={styles.root}>
         <Carousel
           delay={2000}
           style={this.state.size}
@@ -31,16 +30,29 @@ class AuthLanding extends Component {
         >
           <Image
             source={require('../../../../assets/carousel-slide-1.png')}
+            style={styles.carouselImage}
           />
           <Image
             source={require('../../../../assets/carousel-slide-2.png')}
+            style={styles.carouselImage}
           />
           <Image
             source={require('../../../../assets/carousel-slide-3.png')}
+            style={styles.carouselImage}
           />
         </Carousel>
-        <Button onPress={() => { this.props.navigation.navigate('Landing') }} title="Sign Up" />
-        <Button onPress={() => { this.props.navigation.navigate('Landing') }} title="Sign In" />
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.signup}
+            onPress={() => { this.props.navigation.navigate('AppFlow') }}
+            title="Sign Up"
+          />
+          <Button
+            style={styles.signin}
+            onPress={() => { this.props.navigation.navigate('AppFlow') }}
+            title="Sign In"
+          />
+        </View>
       </View>
     )
   }
