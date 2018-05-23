@@ -28,13 +28,13 @@ class Landing extends Component {
         <View />
       )
     }
-    console.log(`listings: ${this.props.listings}`)
+    // console.log(`listings: ${this.props.listings}`)
     return (
       <ScrollView style={styles.flatlist}>
         <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
         <View style={styles.entry}>
           {this.props.listings.map(listing => (
-            <TouchableOpacity style={styles.entries} key={listing._id}>
+            <TouchableOpacity onPress={() => { this.props.navigation.navigate('UserProf', { name: 'Brian', bio: listing.amount, year: listing.location }) }} style={styles.entries} key={listing._id}>
               <Image
                 source={require('../../../../assets/profileOne.png')}
               />
