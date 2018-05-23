@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, Button, ImageBackground } from 'react-native'
 import axios from 'axios'
 
-import styles from './screens/departure/styles'
+import styles from './screens/landing/styles'
 
 class Home extends Component {
   constructor(props) {
