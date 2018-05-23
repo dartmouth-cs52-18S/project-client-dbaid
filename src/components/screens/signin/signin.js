@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import { View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-native'
 import { signinUser } from '../../../actions'
 
 
