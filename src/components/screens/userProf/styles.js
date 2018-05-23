@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    color: 'black',
+    fontWeight: 'bold',
     marginBottom: 5,
   },
   numberInput: {
@@ -18,7 +18,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   under: {
-    flex: 3,
+    flex: 2,
+    fontSize: 20,
+    margin: 20,
+  },
+  image: {
+    width: 170,
+    height: 170,
+  },
+  profile: {
+    flex: 1,
+    margin: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  info: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    margin: 25,
   },
 })
 
