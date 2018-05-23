@@ -29,6 +29,7 @@ class Landing extends Component {
       )
     }
     // console.log(`listings: ${this.props.listings}`)
+    // TODO: LINK LISTING DETAIL PAGE HERE INSTEAD
     return (
       <ScrollView style={styles.flatlist}>
         <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
