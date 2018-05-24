@@ -57,7 +57,7 @@ class Create extends Component {
             data={data}
             onChangeText={(location, index, dat) => {
               this.setState({ location })
-              console.log(dat)
+              // console.log(dat)
             }}
           />
           <TextField
