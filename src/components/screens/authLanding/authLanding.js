@@ -49,12 +49,12 @@ class AuthLanding extends Component {
         <View style={styles.buttonContainer}>
           <Button
             style={styles.signup}
-            onPress={() => { this.props.navigation.navigate('AppFlow') }}
+            onPress={() => { this.props.navigation.navigate('SignUp') }}
             title="Sign Up"
           />
           <Button
             style={styles.signin}
-            onPress={() => { this.props.navigation.navigate('AppFlow') }}
+            onPress={() => { this.props.navigation.navigate('SignIn') }}
             title="Sign In"
           />
         </View>

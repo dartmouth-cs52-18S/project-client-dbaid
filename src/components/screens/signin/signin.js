@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-// import { View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-native'
-import { signinUser } from '../../../actions'
+import { View, Button, TextInput } from 'react-native'
 
-
-// import styles from './styles'
+import styles from './styles'
 
 class SignIn extends Component {
   constructor(props) {
@@ -15,53 +11,33 @@ class SignIn extends Component {
       email: '',
       password: '',
     }
-
-    this.onLoginClick = this.onLoginClick.bind(this)
-    this.closeModal = this.closeModal.bind(this)
-    this.onSubmitClick = this.onSubmitClick.bind(this)
-    this.onPasswordChange = this.onPasswordChange.bind(this)
-    this.onEmailChange = this.onEmailChange.bind(this)
   }
 
-  onSubmitClick() {
-    const fields = {
-      email: this.state.email,
-      password: this.state.password,
-    }
-
-    this.setState({
-      modal: false,
-    })
-
-    // send the post off to be created
-    this.props.signinUser(fields, this.props.history)
-  }
-
-  onPasswordChange(event) {
-    this.setState({ password: event.target.value })
-  }
-
-  onEmailChange(event) {
-    this.setState({ email: event.target.value })
-  }
 
   render() {
     return (
-      <div>
-        <div id="resultsModal" className="modal">
-          <div id="resultsModalContent" className="modalContent">
-            <p className="result1" id="modalText">Enter your credentials and hit submit!</p>
-            <labelhtml For="email">Email</labelhtml>
-            <input onChange={this.onEmailChange} name="email" value={this.state.email} />
-            <labelhtml For="password">password</labelhtml>
-            <input onChange={this.onPasswordChange} name="password" value={this.state.password} />
-            <button onClick={this.onSubmitClick}>Submit</button>
-          </div>
-
-        </div>
-      </div>
+      <View>
+        <View>
+          <TextInput
+            style={styles.inputField}
+            label="Email"
+            onChangeText={email => this.setState({ email })}
+          />
+          <TextInput
+            style={styles.inputField}
+            label="Password"
+            onChangeText={password => this.setState({ password })}
+          />
+        </View>
+        <View>
+          <Button
+            onPress={() => { this.props.navigation.navigate('AppFlow') }}
+            title="Sign In"
+          />
+        </View>
+      </View>
     )
   }
 }
 
-export default withRouter(connect(null, { signinUser })(SignIn))
+export default SignIn
