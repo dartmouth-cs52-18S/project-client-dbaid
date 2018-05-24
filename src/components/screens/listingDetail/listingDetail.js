@@ -8,6 +8,7 @@ const ListingDetail = (props) => {
   const bio = props.navigation.state.params.bio
   const year = props.navigation.state.params.year
   const listing = props.navigation.state.params.listing
+  console.log(listing)
   return (
     <View>
       <View>
@@ -16,14 +17,15 @@ const ListingDetail = (props) => {
           source={require('../../../../assets/profileOne.png')}
         />
         <View>
-          <Text >{ name }</Text>
-          <Text >{ year }</Text>
-          <Text> Selling $100 dba for $20! </Text>
+          <Text > { name }</Text>
+          <Text> Offering: ${listing.amount} </Text>
+          <Text> Location: {listing.location} </Text>
+          <Text > Additional Information: {listing.description}</Text>
         </View>
       </View>
       <View>
         <Button onPress={() => { props.navigation.navigate('ChatDetail', { /* userID: listing.ownerID */}) }} title="Start Chat" />
-        <Button onPress={() => { props.navigation.navigate('UserProf', { /* userID: listing.ownerID/ */ }) }} title="View Profile" />
+        <Button onPress={() => { props.navigation.navigate('UserProf', { name, bio, year }) }} title="View Profile" />
       </View>
     </View>
   )

@@ -12,7 +12,7 @@ import ChatList from '../components/screens/chatList/chatList'
 
 
 // nest stack navigator to handle two internal views
-const MainNavigator = createStackNavigator({
+const MainStackNavigator = createStackNavigator({
   // keys are the names of the "routes"
   Landing,
   Create,
@@ -23,4 +23,4 @@ const MainNavigator = createStackNavigator({
 })
 
 
-export default MainNavigator
+export default MainStackNavigator
