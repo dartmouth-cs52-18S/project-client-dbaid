@@ -35,7 +35,7 @@ class Landing extends Component {
         <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
         <View style={styles.entry}>
           {this.props.listings.map(listing => (
-            <TouchableOpacity onPress={() => { this.props.navigation.navigate('UserProf', { name: 'Brian', bio: listing.amount, year: listing.location }) }} style={styles.entries} key={listing._id}>
+            <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing, name: 'Brian', bio: listing.amount, year: listing.location }) }} style={styles.entries} key={listing._id}>
               <Image
                 source={require('../../../../assets/profileOne.png')}
               />
