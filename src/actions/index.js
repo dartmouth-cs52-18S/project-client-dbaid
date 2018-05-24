@@ -1,5 +1,5 @@
 import axios from 'axios'
-import AsyncStorage from 'react-native'
+import { AsyncStorage } from 'react-native'
 
 const ROOT_URL = 'https://db-aid.herokuapp.com/api'
 
@@ -24,7 +24,7 @@ export function authError(error) {
   }
 }
 
-export function signinUser(signin, history) {
+export function signinUser(signin, props) {
   console.log('Signing in the user')
 
   // takes in an object with email and password (minimal user object)
@@ -36,13 +36,28 @@ export function signinUser(signin, history) {
     axios.post(`${ROOT_URL}/signin`, signin)
       .then((response) => {
         console.log(response)
-        // go to the index page
-        history.push('/')
         dispatch({ type: ActionTypes.AUTH_USER })
         AsyncStorage.setItem('token', response.data.token)
+        props.navigation.navigate('AppFlow')
       })
       .catch((error) => {
         dispatch(authError(`Sign In Failed: ${error.response.data}`))
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data)
+          console.log(error.response.status)
+          console.log(error.response.headers)
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request)
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message)
+        }
+        console.log(error.config)
       })
   // on success does:
   //  dispatch({ type: ActionTypes.AUTH_USER });
@@ -52,7 +67,7 @@ export function signinUser(signin, history) {
 }
 
 
-export function signupUser(signup, history) {
+export function signupUser(signup, props) {
   console.log('Signing up the user')
 
   // takes in an object with email and password (minimal user object)
@@ -68,13 +83,29 @@ export function signupUser(signup, history) {
     axios.post(`${ROOT_URL}/signup`, signup)
       .then((response) => {
         console.log(response)
-        // go to the index page
-        history.push('/')
         dispatch({ type: ActionTypes.AUTH_USER })
         AsyncStorage.setItem('token', response.data.token)
+        console.log('TO APP NAVIGATE')
+        props.navigation.navigate('AppFlow')
       })
       .catch((error) => {
-        dispatch(authError(`Sign Up Failed: ${error.response.data}`))
+        console.log(error)
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data)
+          console.log(error.response.status)
+          console.log(error.response.headers)
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request)
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message)
+        }
+        console.log(error.config)
       })
   }
 }
@@ -82,10 +113,10 @@ export function signupUser(signup, history) {
 
 // deletes token from AsyncStorage
 // and deauths
-export function signoutUser(history) {
+export function signoutUser(props) {
   return (dispatch) => {
     AsyncStorage.removeItem('token')
     dispatch({ type: ActionTypes.DEAUTH_USER })
-    history.push('/')
+    props.navigation.navigate('AuthLanding')
   }
 }
