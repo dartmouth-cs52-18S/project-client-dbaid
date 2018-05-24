@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import { View, Button, TextInput } from 'react-native'
+import { TextField } from 'react-native-material-textfield'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { signinUser } from '../../../actions/index'
 
 import styles from './styles'
 
@@ -18,20 +22,18 @@ class SignIn extends Component {
     return (
       <View>
         <View>
-          <TextInput
-            style={styles.inputField}
+          <TextField
             label="Email"
             onChangeText={email => this.setState({ email })}
           />
-          <TextInput
-            style={styles.inputField}
+          <TextField
             label="Password"
             onChangeText={password => this.setState({ password })}
           />
         </View>
         <View>
           <Button
-            onPress={() => { this.props.navigation.navigate('AppFlow') }}
+            onPress={() => { this.props.signinUser(this.state, this.props) }}
             title="Sign In"
           />
         </View>
@@ -40,4 +42,8 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ signinUser }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(SignIn)

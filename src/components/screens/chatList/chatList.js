@@ -6,7 +6,7 @@ import styles from './styles'
 const ChatList = props =>
 //  const userID = props.navigation.state.params.userID
   (
-    <ScrollView style={styles.flatlist}>
+    <ScrollView>
       <View>
         {/* props.chats.map(chat => (
           <TouchableOpacity onPress={() => { props.navigation.navigate('ChatDetail',
