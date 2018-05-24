@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import MainNavigator from './navigation/main_tab_nav'
+import MainNavigator from './navigation/main_switch_nav'
 
 // import Entry from 'app/components/screens/entry'
 
