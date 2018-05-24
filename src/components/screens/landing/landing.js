@@ -3,6 +3,7 @@ import { View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-n
 
 import { connect } from 'react-redux'
 import { fetchListings } from '../../../redux/reducers/actions'
+import { signoutUser } from '../../../actions/index'
 
 import styles from './styles'
 
@@ -43,6 +44,7 @@ class Landing extends Component {
             </TouchableOpacity>
           ))}
         </View>
+        <Button onPress={() => this.props.signoutUser(this.props)} title="Sign Out" />
       </ScrollView>
     )
   }
@@ -56,6 +58,7 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = {
   fetchListings,
+  signoutUser,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)
