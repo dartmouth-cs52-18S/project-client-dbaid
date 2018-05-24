@@ -9,18 +9,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#219653',
   },
   buttonContainer: {
-    flex: 1,
+    flex: 2,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
+  carouselContainer: {
+    flex: 3,
+  },
   carousel: {
-    height: '50%',
-    width: '80%',
+    flex: 3,
+    // height: '50%',
+    // width: '80%',
   },
   carouselImage: {
-    height: '50%',
-    width: '80%',
+    flex: 3,
+    height: undefined,
+    width: undefined,
   },
   signin: {
     borderRadius: 10,

@@ -23,24 +23,29 @@ class AuthLanding extends Component {
   render() {
     return (
       <View style={styles.root}>
-        <Carousel
-          delay={2000}
-          style={this.state.size}
-          autoplay
-        >
-          <Image
-            source={require('../../../../assets/carousel-slide-1.png')}
-            style={styles.carouselImage}
-          />
-          <Image
-            source={require('../../../../assets/carousel-slide-2.png')}
-            style={styles.carouselImage}
-          />
-          <Image
-            source={require('../../../../assets/carousel-slide-3.png')}
-            style={styles.carouselImage}
-          />
-        </Carousel>
+        <View style={styles.carouselContainer}>
+          <Carousel
+            delay={2000}
+            style={this.state.size}
+            autoplay
+          >
+            <Image
+              resizeMode="contain"
+              source={require('../../../../assets/carousel-slide-1.png')}
+              style={styles.carouselImage}
+            />
+            <Image
+              resizeMode="contain"
+              source={require('../../../../assets/carousel-slide-2.png')}
+              style={styles.carouselImage}
+            />
+            <Image
+              resizeMode="contain"
+              source={require('../../../../assets/carousel-slide-3.png')}
+              style={styles.carouselImage}
+            />
+          </Carousel>
+        </View>
         <View style={styles.buttonContainer}>
           <Button
             style={styles.signup}
