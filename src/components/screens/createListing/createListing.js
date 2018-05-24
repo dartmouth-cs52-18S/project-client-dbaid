@@ -64,7 +64,7 @@ class Create extends Component {
             label="Extra Information"
             value={this.state.descripton}
             onChangeText={description => this.setState({ description })}
-            keyboardType="numeric"
+            keyboardType="default"
           />
 
           <Button
