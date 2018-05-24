@@ -13,10 +13,14 @@ class Create extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      author: '',
+      name: '',
       description: '',
       amount: 0,
       location: '',
     }
+    console.log('CREATE PROPS')
+    console.log(props)
   }
 
 
@@ -72,6 +76,8 @@ class Create extends Component {
               this.props.createListing(
 
                 {
+                  author: this.state.author,
+                  name: this.state.name,
                   description: this.state.description,
                   amount: this.state.amount,
                   location: this.state.location,
