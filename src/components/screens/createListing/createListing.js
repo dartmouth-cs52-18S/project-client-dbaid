@@ -70,13 +70,14 @@ class Create extends Component {
           <Button
             onPress={() => {
               this.props.createListing(
-{
-                description: this.state.description,
-                amount: this.state.amount,
-                location: this.state.location,
-              },
-              this.props, this.props.navigation.state.params.refresh,
-)
+
+                {
+                  description: this.state.description,
+                  amount: this.state.amount,
+                  location: this.state.location,
+                },
+                this.props, this.props.navigation.state.params.refresh,
+              )
             }}
             title="Create Listing"
           />
