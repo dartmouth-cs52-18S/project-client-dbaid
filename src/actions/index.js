@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { AsyncStorage } from 'react-native'
+import { AsyncStorage, Alert } from 'react-native'
 
 const ROOT_URL = 'https://db-aid.herokuapp.com/api'
 
@@ -100,6 +100,13 @@ export function signupUser(signup, props) {
           console.log(error.response.data)
           console.log(error.response.status)
           console.log(error.response.headers)
+
+          // if the error status was 423 the email format was invalid
+          if (error.response.status === 423) {
+            Alert.alert(
+              'You need to enter a vaild email address!',
+            )
+          }
         } else if (error.request) {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
