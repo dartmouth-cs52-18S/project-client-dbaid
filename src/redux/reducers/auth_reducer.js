@@ -1,11 +1,18 @@
 import { ActionTypes } from '../../actions/index'
 
-const AuthReducer = (state = { authenticated: false }, action) => {
+const initial_state = {
+  authenticated: false,
+  user: {},
+}
+
+const AuthReducer = (state = initial_state, action) => {
   switch (action.type) {
     case ActionTypes.AUTH_USER:
       console.log('the AUTH_USER reducer got called;')
+      console.log(`user should be here: ${action.payload}`)
       return Object.assign({}, state, {
         authenticated: true,
+        user: action.payload,
       })
     case ActionTypes.DEAUTH_USER:
       console.log('the DEAUTH_USER reducer got called;')
