@@ -19,8 +19,8 @@ class Create extends Component {
       amount: 0,
       location: '',
     }
-    console.log('CREATE PROPS')
-    console.log(props)
+    // console.log('CREATE PROPS')
+    // console.log(props)
   }
 
 

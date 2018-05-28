@@ -20,14 +20,14 @@ const ListingDetail = (props) => {
           source={require('../../../../assets/profileOne.png')}
         />
         <View>
-          <Text > { author }</Text>
+          <Text > author </Text>
           <Text> Offering: ${listing.amount} </Text>
           <Text> Location: {listing.location} </Text>
           <Text > Additional Information: {listing.description}</Text>
         </View>
       </View>
       <View>
-        <Button onPress={() => { props.navigation.navigate('ChatDetail', { /* userID: listing.ownerID */}) }} title="Start Chat" />
+        <Button onPress={() => { props.navigation.navigate('ChatDetail', { listing }) }} title="Start Chat" />
         <Button onPress={() => { props.navigation.navigate('UserProf', { author, bio, year }) }} title="View Profile" />
       </View>
     </View>

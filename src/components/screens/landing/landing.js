@@ -22,34 +22,35 @@ class Landing extends Component {
   refreshScreen = () => {
     this.props.fetchListings()
   }
-
-  render() {
-    console.log('landing props')
-    console.log(this.props)
-    if (this.props.listings == null) {
-      return (
-        <View />
-      )
-    }
-    // console.log(`listings: ${this.props.listings}`)
-    // TODO: LINK LISTING DETAIL PAGE HERE INSTEAD
+qwdkn
+render() {
+  k
+  // console.log('landing props')
+  // console.log(this.props)
+  if (this.props.listings == null) {
     return (
-      <ScrollView style={styles.flatlist}>
-        <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
-        <View style={styles.entry}>
-          {this.props.listings.map(listing => (
-            <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing, author: this.props, bio: 'I do computer science', year: 'Class of 2020' }) }} style={styles.entries} key={listing._id}>
-              <Image
-                source={require('../../../../assets/profileOne.png')}
-              />
-              <Text> ${listing.amount} - {listing.location} </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-        <Button onPress={() => this.props.signoutUser(this.props)} title="Sign Out" />
-      </ScrollView>
+      <View />
     )
   }
+  // console.log(`listings: ${this.props.listings}`)
+  // TODO: LINK LISTING DETAIL PAGE HERE INSTEAD
+  return (
+    <ScrollView style={styles.flatlist}>
+      <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
+      <View style={styles.entry}>
+        {this.props.listings.map(listing => (
+          <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing, author: this.props, bio: 'I do computer science', year: 'Class of 2020' }) }} style={styles.entries} key={listing._id}>
+            <Image
+              source={require('../../../../assets/profileOne.png')}
+            />
+            <Text> ${listing.amount} - {listing.location} </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+      <Button onPress={() => this.props.signoutUser(this.props)} title="Sign Out" />
+    </ScrollView>
+  )
+}
 }
 
 const mapStateToProps = state => (
