@@ -4,9 +4,10 @@ import { View, Image, Text } from 'react-native'
 import styles from './styles'
 
 const UserProf = (props) => {
-  const name = props.navigation.state.params.name
-  const bio = props.navigation.state.params.bio
-  const year = props.navigation.state.params.year
+  console.log(props)
+  const author = props.navigation.state.params.params.author
+  const bio = props.navigation.state.params.params.bio
+  const year = props.navigation.state.params.params.year
   return (
     <View style={styles.root}>
       <View style={styles.profile}>
@@ -15,7 +16,7 @@ const UserProf = (props) => {
           source={require('../../../../assets/profileOne.png')}
         />
         <View style={styles.info}>
-          <Text style={styles.text}>{ name }</Text>
+          <Text style={styles.text}>{ author }</Text>
           <Text style={styles.text}>{ year }</Text>
         </View>
       </View>

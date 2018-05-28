@@ -26,6 +26,10 @@ export function authError(error) {
 
 export function signinUser(signin, props) {
   console.log('Signing in the user')
+  console.log('signin state')
+  console.log(signin)
+  console.log('signin props')
+  console.log(props)
 
   // takes in an object with email and password (minimal user object)
   // returns a thunk method that takes dispatch as an argument (just like our
@@ -38,7 +42,7 @@ export function signinUser(signin, props) {
         console.log(response)
         dispatch({ type: ActionTypes.AUTH_USER })
         AsyncStorage.setItem('token', response.data.token)
-        props.navigation.navigate('AppFlow')
+        props.navigation.navigate('AppFlow', props)
       })
       .catch((error) => {
         dispatch(authError(`Sign In Failed: ${error.response.data}`))
