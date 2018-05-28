@@ -9,9 +9,9 @@ const ListingDetail = (props) => {
   const bio = props.navigation.state.params.bio
   const year = props.navigation.state.params.year
   const listing = props.navigation.state.params.listing
-  console.log('listing props')
-  console.log(props)
-  console.log(props.navigation.state.params)
+  // console.log('listing props')
+  // console.log(props)
+  // console.log(props.navigation.state.params)
   return (
     <View>
       <View>
@@ -27,7 +27,7 @@ const ListingDetail = (props) => {
         </View>
       </View>
       <View>
-        <Button onPress={() => { props.navigation.navigate('ChatDetail', { listing }) }} title="Start Chat" />
+        <Button onPress={() => { props.navigation.navigate('ChatDetail', { props }) }} title="Start Chat" />
         <Button onPress={() => { props.navigation.navigate('UserProf', { author, bio, year }) }} title="View Profile" />
       </View>
     </View>
