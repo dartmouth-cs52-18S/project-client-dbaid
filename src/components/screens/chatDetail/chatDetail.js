@@ -43,6 +43,7 @@ class ChatDetail extends Component {
       userId: null,
     }
   }
+
   // const userID = props.navigation.state.params.userID
 
   componentWillMount() {
@@ -54,7 +55,9 @@ class ChatDetail extends Component {
           createdAt: new Date(),
           user: {
             _id: 2,
-            name: 'DBA daddy',
+            author: this.props.navigation.state.params.author,
+            bio: this.props.navigation.state.params.bio,
+            year: this.props.navigation.state.params.year,
             avatar: require('../../../../assets/profileOne.png'),
           },
         },
@@ -80,8 +83,12 @@ class ChatDetail extends Component {
     return (
       <GiftedChat
         messages={this.state.messages}
+        params={this.props.navigation.state.params}
+        // author={this.state.author}
+        // bio={this.state.bio}
+        // year={this.state.year}
         onSend={messages => this.onSend(messages)}
-        onPressAvatar={() => { this.props.navigation.navigate('UserProf', this.props) }}
+        onPressAvatar={(params) => { this.props.navigation.navigate('UserProf', { params }) }}
         user={{
           _id: 1,
         }}

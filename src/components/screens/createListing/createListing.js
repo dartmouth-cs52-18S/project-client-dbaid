@@ -78,6 +78,8 @@ class Create extends Component {
                 {
                   author: this.state.author,
                   name: this.state.name,
+                  year: this.state.year,
+                  bio: this.state.bio,
                   description: this.state.description,
                   amount: this.state.amount,
                   location: this.state.location,
