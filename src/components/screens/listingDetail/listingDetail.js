@@ -3,6 +3,19 @@ import { View, Image, Text, Button, ScrollView } from 'react-native'
 
 import styles from './styles'
 
+function renderImage(listing) {
+  if (listing.author === null || listing.author.profilePic === null) {
+    console.log('Pineapple')
+    return (
+      <Image source={require('../../../../assets/default.png')} style={styles.image} />
+    )
+  }
+  const base64 = listing.author.profilePic
+  console.log('BANANA')
+  console.log(base64)
+  return (<Image source={{ uri: base64 }} style={styles.image} />)
+}
+
 const ListingDetail = (props) => {
   const author = props.navigation.state.params.author
   const bio = props.navigation.state.params.bio
@@ -10,13 +23,11 @@ const ListingDetail = (props) => {
   const listing = props.navigation.state.params.listing
   const params = props.navigation.state.params
   // console.log(props.navigation.state.params)
+
   return (
     <View style={styles.root}>
       <View style={styles.profile}>
-        <Image
-          style={styles.image}
-          source={require('../../../../assets/profileOne.png')}
-        />
+        {renderImage(listing)}
         <View style={styles.profile}>
           <Text style={styles.text}> Author: {listing.author.username}</Text>
           <Text style={styles.text}> Offering: ${listing.amount} </Text>
