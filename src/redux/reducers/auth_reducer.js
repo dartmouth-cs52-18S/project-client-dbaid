@@ -9,10 +9,6 @@ const AuthReducer = (state = initial_state, action) => {
   switch (action.type) {
     case ActionTypes.AUTH_USER:
       console.log('the AUTH_USER reducer got called;')
-      console.log(Object.assign(state, {
-        authenticated: true,
-        user: action.payload,
-      }))
       return Object.assign(state, {
         authenticated: true,
         user: action.payload,

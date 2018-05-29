@@ -4,7 +4,6 @@ import { View, Image, Text } from 'react-native'
 import styles from './styles'
 
 const UserProf = (props) => {
-  console.log(props)
   const author = props.navigation.state.params.params.listing.author.username
   const bio = props.navigation.state.params.params.listing.author.bio
   const year = props.navigation.state.params.params.listing.author.year
