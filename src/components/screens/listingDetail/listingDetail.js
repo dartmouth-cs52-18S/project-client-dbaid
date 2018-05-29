@@ -13,17 +13,17 @@ const ListingDetail = (props) => {
   console.log(props)
   // console.log(props.navigation.state.params)
   return (
-    <View>
-      <View>
+    <View style={styles.root}>
+      <View style={styles.profile}>
         <Image
           style={styles.image}
           source={require('../../../../assets/profileOne.png')}
         />
-        <View>
-          <Text> Author: {listing.author.username}</Text>
-          <Text> Offering: ${listing.amount} </Text>
-          <Text> Location: {listing.location} </Text>
-          <Text > Additional Information: {listing.description}</Text>
+        <View style={styles.profile}>
+          <Text style={styles.text}> Author: {author}</Text>
+          <Text style={styles.text}> Offering: ${listing.amount} </Text>
+          <Text style={styles.text}> Location: {listing.location} </Text>
+          <Text style={styles.info}> Additional Information: {listing.description}</Text>
         </View>
       </View>
       <View>
