@@ -37,9 +37,7 @@ class Landing extends Component {
         <View style={styles.entry}>
           {this.props.listings.map(listing => (
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing, bio: 'I do computer science', year: 'Class of 2020' }) }} style={styles.entries} key={listing._id}>
-              {listing.author.profilePic ? (<Image
-                source={require('../../../../assets/profileOne.png')}
-              />) : null}
+              <Image source={require('../../../../assets/profileOne.png')} />
               <Text> ${listing.amount} - {listing.location} </Text>
             </TouchableOpacity>
           ))}
