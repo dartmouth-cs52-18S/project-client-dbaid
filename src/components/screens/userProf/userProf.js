@@ -5,7 +5,7 @@ import styles from './styles'
 
 const UserProf = (props) => {
   console.log(props)
-  const author = props.navigation.state.params.params.author
+  const author = props.navigation.state.params.params.listing.author.username
   const bio = props.navigation.state.params.params.bio
   const year = props.navigation.state.params.params.year
   return (

@@ -20,7 +20,7 @@ const ListingDetail = (props) => {
           source={require('../../../../assets/profileOne.png')}
         />
         <View>
-          <Text> Author: {author}</Text>
+          <Text> Author: {listing.author.username}</Text>
           <Text> Offering: ${listing.amount} </Text>
           <Text> Location: {listing.location} </Text>
           <Text > Additional Information: {listing.description}</Text>
