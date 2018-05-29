@@ -19,8 +19,8 @@ class Create extends Component {
       amount: 0,
       location: '',
     }
-    // console.log('CREATE PROPS')
-    // console.log(props)
+    console.log('CREATE PROPS')
+    console.log(props)
   }
 
 
@@ -73,13 +73,12 @@ class Create extends Component {
 
           <Button
             onPress={() => {
+              console.log('BANANA')
+              console.log(this.props.user)
               this.props.createListing(
 
                 {
-                  author: this.state.author,
-                  name: this.state.name,
-                  year: this.state.year,
-                  bio: this.state.bio,
+                  author: this.props.user,
                   description: this.state.description,
                   amount: this.state.amount,
                   location: this.state.location,
@@ -98,6 +97,7 @@ class Create extends Component {
 const mapStateToProps = state => (
   {
     listings: state.listings.all,
+    user: state.auth.user,
   }
 )
 
