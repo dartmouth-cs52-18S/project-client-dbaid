@@ -5,7 +5,7 @@ import styles from './styles'
 class AuthLoadingScreen extends React.Component {
   constructor(props) {
     super(props)
-    setTimeout(this._bootstrapAsync, 3000)
+    this._bootstrapAsync()
   }
 
   // Fetch the token from storage then navigate accordingly
