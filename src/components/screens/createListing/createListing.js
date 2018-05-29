@@ -13,10 +13,14 @@ class Create extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      author: '',
+      name: '',
       description: '',
       amount: 0,
       location: '',
     }
+    console.log('CREATE PROPS')
+    console.log(props)
   }
 
 
@@ -69,9 +73,11 @@ class Create extends Component {
 
           <Button
             onPress={() => {
+              console.log(this.props.user)
               this.props.createListing(
 
                 {
+                  author: this.props.user,
                   description: this.state.description,
                   amount: this.state.amount,
                   location: this.state.location,
@@ -90,6 +96,7 @@ class Create extends Component {
 const mapStateToProps = state => (
   {
     listings: state.listings.all,
+    user: state.auth.user,
   }
 )
 

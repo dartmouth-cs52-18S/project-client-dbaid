@@ -1,8 +1,7 @@
 import axios from 'axios'
-import { AsyncStorage } from 'react-native'
+import { AsyncStorage, Alert } from 'react-native'
 
 const ROOT_URL = 'https://db-aid.herokuapp.com/api'
-
 // keys for actiontypes
 export const ActionTypes = {
   FETCH_POSTS: 'FETCH_POSTS',
@@ -26,6 +25,10 @@ export function authError(error) {
 
 export function signinUser(signin, props) {
   console.log('Signing in the user')
+  console.log('signin state')
+  console.log(signin)
+  console.log('signin props')
+  console.log(props)
 
   // takes in an object with email and password (minimal user object)
   // returns a thunk method that takes dispatch as an argument (just like our
@@ -36,12 +39,12 @@ export function signinUser(signin, props) {
     axios.post(`${ROOT_URL}/signin`, signin)
       .then((response) => {
         console.log(response)
-        dispatch({ type: ActionTypes.AUTH_USER })
+        dispatch({ type: ActionTypes.AUTH_USER, payload: response.data.user })
         AsyncStorage.setItem('token', response.data.token)
-        props.navigation.navigate('AppFlow')
+        props.navigation.navigate('AppFlow', props)
       })
       .catch((error) => {
-        dispatch(authError(`Sign In Failed: ${error.response.data}`))
+        dispatch(authError('Sign In Failed'))
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
@@ -83,7 +86,7 @@ export function signupUser(signup, props) {
     axios.post(`${ROOT_URL}/signup`, signup)
       .then((response) => {
         console.log(response)
-        dispatch({ type: ActionTypes.AUTH_USER })
+        dispatch({ type: ActionTypes.AUTH_USER, payload: response.data.user })
         AsyncStorage.setItem('token', response.data.token)
         console.log('TO APP NAVIGATE')
         props.navigation.navigate('AppFlow')
@@ -96,6 +99,13 @@ export function signupUser(signup, props) {
           console.log(error.response.data)
           console.log(error.response.status)
           console.log(error.response.headers)
+
+          // if the error status was 423 the email format was invalid
+          if (error.response.status === 423) {
+            Alert.alert(
+              'You need to enter a vaild email address!',
+            )
+          }
         } else if (error.request) {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of

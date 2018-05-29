@@ -1,17 +1,35 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
+  amount: {
+    flex: 1,
+    marginTop: 30,
+  },
   root: {
     flex: 1,
   },
+  text: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  numberInput: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  under: {
+    flex: 2,
+    fontSize: 20,
+    margin: 20,
+  },
   image: {
-    width: 100,
-    height: 100,
+    width: 170,
+    height: 170,
   },
   profile: {
     flex: 1,
     margin: 10,
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
@@ -21,10 +39,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     margin: 25,
-  },
-  text: {
-    fontSize: 20,
-    marginBottom: 5,
   },
 })
 
