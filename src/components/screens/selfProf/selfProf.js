@@ -1,13 +1,11 @@
 import React from 'react'
 import { View, Image, Text } from 'react-native'
+import { connect } from 'react-redux'
 
 import styles from './styles'
 
 const UserProf = (props) => {
-  console.log(props)
-  const author = props.navigation.state.params.params.listing.author.username
-  const bio = props.navigation.state.params.params.listing.author.bio
-  const year = props.navigation.state.params.params.listing.author.year
+  console.log(props.user)
   return (
     <View style={styles.root}>
       <View style={styles.profile}>
@@ -16,13 +14,17 @@ const UserProf = (props) => {
           source={require('../../../../assets/profileOne.png')}
         />
         <View style={styles.info}>
-          <Text style={styles.text}>{ author }</Text>
-          <Text style={styles.text}>{ year }</Text>
+          <Text style={styles.text}>{props.user.username}</Text>
+          <Text style={styles.text}>{props.user.year}</Text>
         </View>
       </View>
-      <Text style={styles.under}>{ bio }</Text>
+      <Text style={styles.under}>{props.user.bio}</Text>
     </View>
   )
 }
 
-export default UserProf
+const mapStateToProps = state => ({
+  user: state.auth.user,
+})
+
+export default connect(mapStateToProps)(UserProf)

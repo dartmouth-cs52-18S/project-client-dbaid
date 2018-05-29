@@ -73,7 +73,6 @@ class Create extends Component {
 
           <Button
             onPress={() => {
-              console.log('BANANA')
               console.log(this.props.user)
               this.props.createListing(
 
