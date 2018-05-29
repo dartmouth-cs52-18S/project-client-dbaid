@@ -49,7 +49,7 @@ class SignUp extends Component {
             onPress={this.pickImage}
           />
           {profilePic ? (
-            <Image source={{ uri: profilePic }} style={{ width: 200, height: 200 }} />) : null}
+            <Image source={{ uri: profilePic }} style={{ width: 200, height: 200, alignSelf: 'center' }} />) : null}
           <TextField
             style={styles.inputField}
             label="Email"

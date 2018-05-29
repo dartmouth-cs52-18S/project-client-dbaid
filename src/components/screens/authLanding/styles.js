@@ -29,25 +29,16 @@ const styles = StyleSheet.create({
     width: undefined,
   },
   signin: {
-    borderRadius: 20,
-    width: '40%',
     backgroundColor: '#1CA3A2',
-    padding: '10px',
-    marginLeft: '5px',
-    marginRight: '5px',
   },
   signup: {
-    borderRadius: 20,
-    width: '40%',
     backgroundColor: '#1DAD83',
-    padding: '10px',
-    marginLeft: '5px',
-    marginRight: '5px',
   },
   buttonViewDimensions: {
     marginTop: 57,
     marginLeft: 5,
     marginRight: 5,
+    backgroundColor: '#1CA3A2',
   },
 })
 
