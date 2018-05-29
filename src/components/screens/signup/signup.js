@@ -18,7 +18,7 @@ class SignUp extends Component {
       username: '',
       bio: '',
       year: 0,
-      image: null,
+      profilePic: null,
     }
   }
   // image picking from https://www.youtube.com/watch?v=d1nw3QdLv8w&index=8&list=PLN3n1USn4xlmqhVdKMurNREwtiUpq-SFy
@@ -26,18 +26,17 @@ class SignUp extends Component {
     const result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       aspect: [4, 3],
+      base64: true,
     })
 
-    console.log(result.uri)
-
     if (!result.cancelled) {
-      this.setState({ image: result.uri })
+      this.setState({ profilePic: `data:image/png;base64,${result.base64}` })
     }
   }
 
 
   render() {
-    const { image } = this.state
+    const { profilePic } = this.state
     return (
       <View>
         <View>
@@ -49,8 +48,8 @@ class SignUp extends Component {
             title="Pick an image from camera roll"
             onPress={this.pickImage}
           />
-          {image ? (
-            <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />) : null}
+          {profilePic ? (
+            <Image source={{ uri: profilePic }} style={{ width: 200, height: 200 }} />) : null}
           <TextField
             style={styles.inputField}
             label="Email"
