@@ -15,6 +15,8 @@ class SignUp extends Component {
       email: '',
       password: '',
       username: '',
+      bio: '',
+      year: 0,
     }
   }
 
@@ -35,6 +37,15 @@ class SignUp extends Component {
           <TextField
             label="Password"
             onChangeText={password => this.setState({ password })}
+          />
+          <TextField
+            label="Bio"
+            onChangeText={bio => this.setState({ bio })}
+          />
+          <TextField
+            label="Year"
+            keyboardType="numeric"
+            onChangeText={year => this.setState({ year })}
           />
         </View>
         <View>
