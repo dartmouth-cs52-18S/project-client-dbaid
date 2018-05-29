@@ -9,10 +9,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#219653',
   },
   buttonContainer: {
-    flex: 2,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    alignContent: 'space-between',
   },
   carouselContainer: {
     flex: 3,
@@ -28,16 +29,25 @@ const styles = StyleSheet.create({
     width: undefined,
   },
   signin: {
-    borderRadius: 10,
+    borderRadius: 20,
     width: '40%',
     backgroundColor: '#1CA3A2',
     padding: '10px',
+    marginLeft: '5px',
+    marginRight: '5px',
   },
   signup: {
-    borderRadius: 10,
+    borderRadius: 20,
     width: '40%',
     backgroundColor: '#1DAD83',
     padding: '10px',
+    marginLeft: '5px',
+    marginRight: '5px',
+  },
+  buttonViewDimensions: {
+    padding: '10px',
+    marginLeft: '5px',
+    marginRight: '5px',
   },
 })
 
