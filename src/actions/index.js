@@ -2,7 +2,6 @@ import axios from 'axios'
 import { AsyncStorage, Alert } from 'react-native'
 
 const ROOT_URL = 'https://db-aid.herokuapp.com/api'
-
 // keys for actiontypes
 export const ActionTypes = {
   FETCH_POSTS: 'FETCH_POSTS',
@@ -40,12 +39,12 @@ export function signinUser(signin, props) {
     axios.post(`${ROOT_URL}/signin`, signin)
       .then((response) => {
         console.log(response)
-        dispatch({ type: ActionTypes.AUTH_USER })
+        dispatch({ type: ActionTypes.AUTH_USER, payload: response.data.user })
         AsyncStorage.setItem('token', response.data.token)
         props.navigation.navigate('AppFlow', props)
       })
       .catch((error) => {
-        dispatch(authError(`Sign In Failed: ${error.response.data}`))
+        dispatch(authError('Sign In Failed'))
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
@@ -87,7 +86,7 @@ export function signupUser(signup, props) {
     axios.post(`${ROOT_URL}/signup`, signup)
       .then((response) => {
         console.log(response)
-        dispatch({ type: ActionTypes.AUTH_USER })
+        dispatch({ type: ActionTypes.AUTH_USER, payload: response.data.user })
         AsyncStorage.setItem('token', response.data.token)
         console.log('TO APP NAVIGATE')
         props.navigation.navigate('AppFlow')
