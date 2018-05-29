@@ -45,9 +45,9 @@ const styles = StyleSheet.create({
     marginRight: '5px',
   },
   buttonViewDimensions: {
-    padding: '10px',
-    marginLeft: '5px',
-    marginRight: '5px',
+    marginTop: 57,
+    marginLeft: 5,
+    marginRight: 5,
   },
 })
 
