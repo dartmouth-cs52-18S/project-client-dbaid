@@ -7,6 +7,9 @@ import styles from './styles'
 const { width, height } = Dimensions.get('window')
 
 class AuthLanding extends Component {
+  static navigationOptions = {
+    header: null,
+  }
   constructor(props) {
     super(props)
 
