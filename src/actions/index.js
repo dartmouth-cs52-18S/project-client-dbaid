@@ -24,12 +24,6 @@ export function authError(error) {
 }
 
 export function signinUser(signin, props) {
-  console.log('Signing in the user')
-  console.log('signin state')
-  console.log(signin)
-  console.log('signin props')
-  console.log(props)
-
   // takes in an object with email and password (minimal user object)
   // returns a thunk method that takes dispatch as an argument (just like our
   // create post method really)
@@ -38,7 +32,6 @@ export function signinUser(signin, props) {
     // make new post with axios
     axios.post(`${ROOT_URL}/signin`, signin)
       .then((response) => {
-        console.log(response)
         dispatch({ type: ActionTypes.AUTH_USER, payload: response.data.user })
         AsyncStorage.setItem('token', response.data.token)
         props.navigation.navigate('AppFlow', props)
@@ -48,9 +41,7 @@ export function signinUser(signin, props) {
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
-          console.log(error.response.data)
-          console.log(error.response.status)
-          console.log(error.response.headers)
+          console.log('fail')
         } else if (error.request) {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
@@ -85,7 +76,6 @@ export function signupUser(signup, props) {
     // make new post with axios
     axios.post(`${ROOT_URL}/signup`, signup)
       .then((response) => {
-        console.log(response)
         dispatch({ type: ActionTypes.AUTH_USER, payload: response.data.user })
         AsyncStorage.setItem('token', response.data.token)
         console.log('TO APP NAVIGATE')
@@ -96,9 +86,6 @@ export function signupUser(signup, props) {
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
-          console.log(error.response.data)
-          console.log(error.response.status)
-          console.log(error.response.headers)
 
           // if the error status was 423 the email format was invalid
           if (error.response.status === 423) {
