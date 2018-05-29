@@ -13,6 +13,7 @@ class Landing extends Component {
     this.state = {
       message: '',
     }
+    this.renderImage = this.renderImage.bind(this)
   }
 
   componentDidMount = () => {
@@ -23,21 +24,33 @@ class Landing extends Component {
     this.props.fetchListings()
   }
 
+  renderImage(listing) {
+    if (listing.author === null || listing.author.profilePic === null) {
+      console.log('APPLE')
+      return (
+        <Image source={require('../../../../assets/default.png')} style={styles.image} />
+      )
+    }
+    const base64 = listing.author.profilePic
+    console.log('BANANA')
+    console.log(base64)
+    return (<Image source={{ uri: base64 }} style={styles.image} />)
+  }
+
   render() {
     if (this.props.listings == null) {
       return (
         <View />
       )
     }
-    console.log('BANANA')
     // console.log(`listings: ${this.props.listings}`)
     return (
       <ScrollView style={styles.flatlist}>
         <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
         <View style={styles.entry}>
           {this.props.listings.map(listing => (
-            <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing, bio: 'I do computer science', year: 'Class of 2020' }) }} style={styles.entries} key={listing._id}>
-              <Image source={require('../../../../assets/profileOne.png')} />
+            <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing }) }} style={styles.entries} key={listing._id}>
+              {this.renderImage(listing)}
               <Text> ${listing.amount} - {listing.location} </Text>
             </TouchableOpacity>
           ))}
