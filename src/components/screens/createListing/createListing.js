@@ -56,7 +56,7 @@ class Create extends Component {
     }, {
       value: 'McLaughlin',
     }, {
-      value: 'East Wheezy',
+      value: 'EW',
     }]
 
     return (
@@ -71,6 +71,7 @@ class Create extends Component {
               totalHeight={100}
               iconSize={25}
               step={1}
+              minValue={0}
               valueType="real"
               rounded
               textColor="#000000"
