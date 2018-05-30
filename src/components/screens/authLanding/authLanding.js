@@ -50,16 +50,20 @@ class AuthLanding extends Component {
           </Carousel>
         </View>
         <View style={styles.buttonContainer}>
-          <Button
-            style={styles.signup}
-            onPress={() => { this.props.navigation.navigate('SignUp') }}
-            title="Sign Up"
-          />
-          <Button
-            style={styles.signin}
-            onPress={() => { this.props.navigation.navigate('SignIn') }}
-            title="Sign In"
-          />
+          <View style={styles.buttonViewDimensions}>
+            <Button
+              // style={styles.signup}
+              onPress={() => { this.props.navigation.navigate('SignUp') }}
+              title="Sign Up"
+            />
+          </View>
+          <View style={styles.buttonViewDimensions}>
+            <Button
+              // style={styles.signin}
+              onPress={() => { this.props.navigation.navigate('SignIn') }}
+              title="Sign In"
+            />
+          </View>
         </View>
       </View>
     )

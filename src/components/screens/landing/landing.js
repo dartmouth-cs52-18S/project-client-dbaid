@@ -3,7 +3,6 @@ import { View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-n
 
 import { connect } from 'react-redux'
 import { fetchListings } from '../../../redux/reducers/actions'
-import { signoutUser } from '../../../actions/index'
 
 import styles from './styles'
 
@@ -13,6 +12,7 @@ class Landing extends Component {
     this.state = {
       message: '',
     }
+    this.renderImage = this.renderImage.bind(this)
   }
 
   componentDidMount = () => {
@@ -23,30 +23,34 @@ class Landing extends Component {
     this.props.fetchListings()
   }
 
+  renderImage(listing) {
+    if (listing.author === null || listing.author.profilePic === null) {
+      return (
+        <Image source={require('../../../../assets/default.png')} style={styles.image} />
+      )
+    }
+    const base64 = listing.author.profilePic
+    return (<Image source={{ uri: base64 }} style={styles.image} />)
+  }
+
   render() {
-  // console.log('landing props')
-    // console.log(this.props)
     if (this.props.listings == null) {
       return (
         <View />
       )
     }
     // console.log(`listings: ${this.props.listings}`)
-    // TODO: LINK LISTING DETAIL PAGE HERE INSTEAD
     return (
       <ScrollView style={styles.flatlist}>
         <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
         <View style={styles.entry}>
           {this.props.listings.map(listing => (
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing }) }} style={styles.entries} key={listing._id}>
-              <Image
-                source={require('../../../../assets/profileOne.png')}
-              />
+              {this.renderImage(listing)}
               <Text> ${listing.amount} - {listing.location} </Text>
             </TouchableOpacity>
           ))}
         </View>
-        <Button onPress={() => this.props.signoutUser(this.props)} title="Sign Out" />
       </ScrollView>
     )
   }
@@ -60,7 +64,6 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = {
   fetchListings,
-  signoutUser,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)
