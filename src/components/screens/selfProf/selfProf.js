@@ -25,7 +25,7 @@ const UserProf = props => (
       </View>
     </View>
     <Text style={styles.under}>{props.user.bio}</Text>
-    <Button onPress={() => this.props.signoutUser(this.props)} title="Sign Out" />
+    <Button onPress={() => props.signoutUser(props)} title="Sign Out" />
   </View>
 )
 
@@ -37,4 +37,4 @@ const mapDispatchToProps = {
   signoutUser,
 }
 
-export default connect(mapStateToProps)(UserProf)
+export default connect(mapStateToProps, mapDispatchToProps)(UserProf)
