@@ -13,10 +13,19 @@ class Landing extends Component {
       message: '',
     }
     this.renderImage = this.renderImage.bind(this)
+    this.getTimeString = this.getTimeString.bind(this)
   }
 
   componentDidMount = () => {
     this.props.fetchListings()
+  }
+
+  getTimeString(listing) {
+    const date = new Date(listing.startTime)
+    if (listing.startTime === null || date.toLocaleTimeString() === undefined) return ('None')
+    const time = date.toLocaleTimeString()
+    console.log(time)
+    return time
   }
 
   refreshScreen = () => {
@@ -48,6 +57,7 @@ class Landing extends Component {
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing }) }} style={styles.entries} key={listing._id}>
               {this.renderImage(listing)}
               <Text> ${listing.amount} - {listing.location} </Text>
+              <Text>{this.getTimeString(listing)}</Text>
             </TouchableOpacity>
           ))}
         </View>
