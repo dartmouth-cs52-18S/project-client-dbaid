@@ -55,7 +55,6 @@ class Local extends Component {
       location.coords.longitude > -72.290 && location.coords.longitude < -72.288) {
       this.setState({ location: 'Collis' })
       console.log(this.state.location)
-      console.log('done')
     }
     // this.setState({ location: null })
     this.props.fetchLocationListings(this.state.location)
