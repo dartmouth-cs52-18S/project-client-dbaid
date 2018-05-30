@@ -11,8 +11,8 @@ function renderImage(listing) {
     )
   }
   const base64 = listing.author.profilePic
-  console.log('BANANA')
-  console.log(base64)
+  // console.log('BANANA')
+  // console.log(base64)
   return (<Image source={{ uri: base64 }} style={styles.image} />)
 }
 

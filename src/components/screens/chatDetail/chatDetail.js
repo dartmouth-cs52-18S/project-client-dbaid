@@ -29,7 +29,7 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 import { GiftedChat } from 'react-native-gifted-chat'
 import { fetchMessages, sendMessage } from '../../../redux/reducers/actions'
 
@@ -40,9 +40,10 @@ class ChatDetail extends Component {
     super(props)
     this.state = {
       messages: [],
-      userId: null,
-      listing: null,
+      // avatar: require('../../../../assets/profileOne.png'),
     }
+
+    this.imagePath = this.imagePath.bind(this)
   }
 
   componentWillMount() {
@@ -56,16 +57,36 @@ class ChatDetail extends Component {
             _id: 2,
             listing: this.props.navigation.state.params.params.listing,
             avatar: require('../../../../assets/profileOne.png'),
+            // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
+            // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
           },
         },
       ],
     })
   }
 
+
   onSend(messages = []) {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }))
+  }
+
+  imagePath(listing) {
+    if (listing.author === null || listing.author.profilePic === null) {
+      return (
+        require('../../../../assets/default.png')
+        // <Image source={require('../../../../assets/default.png')} style={styles.image} />
+      )
+    }
+    const base64 = listing.author.profilePic
+    return { uri: base64 }// (<Image source={{ uri: base64 }} style={styles.image} />)
+  }
+
+  renderAvatar(listing) {
+    this.setState({
+      avatar: this.imagePath(this.props.navigation.state.params.params.listing) },
+    )
   }
 
   render() {
