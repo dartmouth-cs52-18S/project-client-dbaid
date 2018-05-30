@@ -49,13 +49,14 @@ class SignUp extends Component {
             onPress={this.pickImage}
           />
           {profilePic ? (
-            <Image source={{ uri: profilePic }} style={{ width: 200, height: 200 }} />) : null}
+            <Image source={{ uri: profilePic }} style={{ width: 200, height: 200, alignSelf: 'center' }} />) : null}
           <TextField
             style={styles.inputField}
             label="Email"
             onChangeText={email => this.setState({ email })}
           />
           <TextField
+            secureTextEntry
             label="Password"
             onChangeText={password => this.setState({ password })}
           />

@@ -27,6 +27,7 @@ class SignIn extends Component {
             onChangeText={email => this.setState({ email })}
           />
           <TextField
+            secureTextEntry
             label="Password"
             onChangeText={password => this.setState({ password })}
           />
