@@ -3,14 +3,16 @@ import { createBottomTabNavigator } from 'react-navigation'
 import { View, Text } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MainNavigator from './main_stack_nav'
+import ChatNavigator from './chat_stack_nav'// components/screens/chatList/chatList'
 import Profile from '../components/screens/selfProf/selfProf'
 
-const ChatTab = () => <View style={{ flex: 1, justifyContent: 'center' }}><Text>CHAT</Text></View>
+// const ChatTab = () => <View style={{ flex: 1,
+// justifyContent: 'center' }}><Text>CHAT</Text></View>
 
 
 const MainTabBar = createBottomTabNavigator({
   DBA: MainNavigator,
-  Chat: ChatTab,
+  Chat: ChatNavigator,
   Me: Profile,
 }, {
   navigationOptions: ({ navigation }) => ({

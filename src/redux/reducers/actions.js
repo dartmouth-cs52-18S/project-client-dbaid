@@ -65,11 +65,11 @@ export function createListing(listing, props, refresh) {
 }
 
 
-export function fetchMessages() {
+export function fetchChats() {
   return (dispatch) => {
     axios.get(`${ROOT_URL}/chats`).then((response) => {
       // console.log(response.data)
-      dispatch({ type: ActionTypes.GET_MESSAGES, payload: response.data })
+      dispatch({ type: ActionTypes.GET_CHATS, payload: response.data })
     }).catch((error) => {
       console.error(error)
       if (error.response) {
@@ -92,7 +92,7 @@ export function fetchMessages() {
   }
 }
 
-export function sendMessage(chat, props, refresh) {
+export function startChat(chat, props, refresh) {
   return () => {
     axios.post(`${ROOT_URL}/chats`, chat, {
       headers: {
@@ -101,7 +101,8 @@ export function sendMessage(chat, props, refresh) {
     })
       .then(() => {
         refresh()
-        props.navigation.goBack()
+        console.log('TO APP NAVIGATE')
+        props.navigation.navigate('AppFlow') // Go to individual chat within Big Chat Nav
       }).catch((error) => {
         console.error(error)
         if (error.response) {
