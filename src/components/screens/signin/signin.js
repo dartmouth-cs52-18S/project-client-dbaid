@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Button, TextInput, Image, Text, ScrollView } from 'react-native'
 import { TextField } from 'react-native-material-textfield'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { signinUser } from '../../../actions/index'
@@ -20,7 +21,7 @@ class SignIn extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <KeyboardAwareScrollView>
         <View>
           <Image
             style={{ width: '100%', height: 300, alignSelf: 'center' }}
@@ -55,7 +56,7 @@ class SignIn extends Component {
             title="Sign Up"
           />
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     )
   }
 }
