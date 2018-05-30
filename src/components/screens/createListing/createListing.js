@@ -85,6 +85,7 @@ class Create extends Component {
               iconSize={25}
               step={1}
               minValue={0}
+              maxValue={500}
               valueType="real"
               rounded
               textColor="#000000"
