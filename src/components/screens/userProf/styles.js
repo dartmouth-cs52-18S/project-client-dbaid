@@ -20,9 +20,15 @@ const styles = StyleSheet.create({
   under: {
     flex: 2,
     fontSize: 20,
-    margin: 20,
+    margin: 10,
+  },
+  footer: {
+    flex: 1,
+    fontSize: 20,
+    margin: 10,
   },
   image: {
+    marginTop: 30,
     width: 170,
     height: 170,
   },

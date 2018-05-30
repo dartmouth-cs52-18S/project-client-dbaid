@@ -41,10 +41,9 @@ class ChatDetail extends Component {
     this.state = {
       messages: [],
       userId: null,
+      listing: null,
     }
   }
-
-  // const userID = props.navigation.state.params.userID
 
   componentWillMount() {
     this.setState({
@@ -55,9 +54,7 @@ class ChatDetail extends Component {
           createdAt: new Date(),
           user: {
             _id: 2,
-            author: this.props.navigation.state.params.author,
-            bio: this.props.navigation.state.params.bio,
-            year: this.props.navigation.state.params.year,
+            listing: this.props.navigation.state.params.params.listing,
             avatar: require('../../../../assets/profileOne.png'),
           },
         },
@@ -72,8 +69,8 @@ class ChatDetail extends Component {
   }
 
   render() {
-    // console.log('chat props')
-    // console.log(this.props)
+    console.log('chat listing?')
+    console.log(this.props.navigation.state.params.params)
     if (this.props == null) {
       return (
         <View />
@@ -83,10 +80,7 @@ class ChatDetail extends Component {
     return (
       <GiftedChat
         messages={this.state.messages}
-        params={this.props.navigation.state.params}
-        // author={this.state.author}
-        // bio={this.state.bio}
-        // year={this.state.year}
+        params={this.state.listing}
         onSend={messages => this.onSend(messages)}
         onPressAvatar={(params) => { this.props.navigation.navigate('UserProf', { params }) }}
         user={{
