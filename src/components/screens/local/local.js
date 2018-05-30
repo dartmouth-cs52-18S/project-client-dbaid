@@ -56,7 +56,7 @@ class Local extends Component {
       this.setState({ location: 'Collis' })
       console.log(this.state.location)
     }
-    // this.setState({ location: null })
+    this.setState({ location: null })
     this.props.fetchLocationListings(this.state.location)
 
     const willFocusSubscription = this.props.navigation.addListener(
