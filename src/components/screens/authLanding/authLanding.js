@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Button, Image, Dimensions } from 'react-native'
+import { View, TouchableOpacity, Image, Dimensions, Text } from 'react-native'
 import Carousel from 'react-native-looped-carousel'
 
 import styles from './styles'
@@ -51,18 +51,20 @@ class AuthLanding extends Component {
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.buttonViewDimensions}>
-            <Button
-              // style={styles.signup}
+            <TouchableOpacity
+              style={styles.signup}
               onPress={() => { this.props.navigation.navigate('SignUp') }}
-              title="Sign Up"
-            />
+            >
+              <Text style={styles.text}>Sign up</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.buttonViewDimensions}>
-            <Button
-              // style={styles.signin}
+            <TouchableOpacity
+              style={styles.signin}
               onPress={() => { this.props.navigation.navigate('SignIn') }}
-              title="Sign In"
-            />
+            >
+              <Text style={styles.text}>Sign In</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
