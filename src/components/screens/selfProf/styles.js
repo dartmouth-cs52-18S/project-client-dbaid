@@ -25,9 +25,11 @@ const styles = StyleSheet.create({
   image: {
     width: 170,
     height: 170,
+    marginTop: 30,
   },
   profile: {
     flex: 1,
+    marginTop: 20,
     margin: 10,
     flexDirection: 'row',
     alignItems: 'center',

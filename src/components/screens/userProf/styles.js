@@ -18,13 +18,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   under: {
-    flex: 2,
+    flex: 3,
     fontSize: 20,
     margin: 10,
+    marginTop: 40,
   },
   footer: {
     flex: 1,
-    fontSize: 20,
+    fontSize: 12,
     margin: 10,
   },
   image: {
