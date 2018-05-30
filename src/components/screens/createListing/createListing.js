@@ -22,6 +22,8 @@ class Create extends Component {
       isDateTimePickerVisible: false,
       startTime: new Date(),
     }
+    console.log('create props')
+    console.log(props)
   }
 
 
@@ -30,8 +32,8 @@ class Create extends Component {
   _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
   _handleDatePicked = (time) => {
-    console.log('BANANA')
-    console.log('A date has been picked: ', time.toLocaleString())
+    // console.log('BANANA')
+    // console.log('A date has been picked: ', time.toLocaleString())
     this.setState({ startTime: time })
     this._hideDateTimePicker()
   };
@@ -112,8 +114,9 @@ class Create extends Component {
 
           <Button
             onPress={() => {
+              console.log('create props')
+              console.log(this.props)
               this.props.createListing(
-
                 {
                   author: this.props.user,
                   description: this.state.description,

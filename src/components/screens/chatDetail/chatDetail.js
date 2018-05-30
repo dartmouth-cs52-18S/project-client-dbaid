@@ -39,30 +39,34 @@ class ChatDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      messages: [],
+      message: '',
       // avatar: require('../../../../assets/profileOne.png'),
     }
 
     this.imagePath = this.imagePath.bind(this)
   }
 
-  componentWillMount() {
-    this.setState({
-      messages: [
-        {
-          _id: 1,
-          text: 'Sup boys',
-          createdAt: new Date(),
-          user: {
-            _id: 2,
-            listing: this.props.navigation.state.params.params.listing,
-            avatar: require('../../../../assets/profileOne.png'),
-            // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
-            // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
-          },
-        },
-      ],
-    })
+  componentDidMount() {
+    // this.setState({
+    //   messages: [
+    //     {
+    //       // _id: 1,
+    //       text: 'Sup boys',
+    //       createdAt: new Date(),
+    //       userID:
+    //       // user: {
+    //       //   _id: 2,
+    //       //   listing: this.props.navigation.state.params.params.listing,
+    //       //   avatar: require('../../../../assets/profileOne.png'),
+    //       // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
+    //       // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
+    //       // },
+    //     },
+    //   ],
+    // })
+    console.log('chat PROPS?')
+    console.log(this.props)
+    this.props.fetchMessages(this.props.navigation.state.params.chat.id)
   }
 
 
@@ -83,15 +87,17 @@ class ChatDetail extends Component {
     return { uri: base64 }// (<Image source={{ uri: base64 }} style={styles.image} />)
   }
 
-  renderAvatar(listing) {
-    this.setState({
-      avatar: this.imagePath(this.props.navigation.state.params.params.listing) },
-    )
-  }
+  // renderAvatar(listing) {
+  //   this.setState({
+  //     avatar: this.imagePath(this.props.navigation.state.params.params.listing) },
+  //   )
+  // }
 
   render() {
     console.log('chat listing?')
     console.log(this.props.navigation.state.params.params)
+    console.log('chat state')
+    console.log(this.state)
     if (this.props == null) {
       return (
         <View />
@@ -112,4 +118,16 @@ class ChatDetail extends Component {
   }
 }
 
-export default ChatDetail
+const mapStateToProps = state => (
+  {
+    user: state.auth.user,
+    messages: state.messages[state.chats.chatID],
+  }
+)
+
+const mapDispatchToProps = {
+  fetchMessages,
+  sendMessage,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatDetail)

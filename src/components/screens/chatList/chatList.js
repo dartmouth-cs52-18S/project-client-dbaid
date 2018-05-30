@@ -14,7 +14,14 @@ class ChatList extends Component {
   }
 
 componentDidMount = () => {
-  this.props.fetchChats()
+  this.props.fetchChats(this.props.user)
+  // this.props.fetchListings()
+  const willFocusSubscription = this.props.navigation.addListener(
+    'willFocus',
+    (payload) => {
+      this.props.fetchChats()
+    },
+  )
 }
 //  const userID = props.navigation.state.params.userID
 render() {

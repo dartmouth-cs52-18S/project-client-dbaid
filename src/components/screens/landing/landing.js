@@ -69,7 +69,7 @@ class Landing extends Component {
         <View />
       )
     }
-    // console.log(`listings: ${this.props.listings}`)
+    console.log(`listings: ${this.props.listings}`)
     return (
       <ScrollView style={styles.flatlist}>
         <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />

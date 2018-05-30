@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View, Image, Text, Button, ScrollView } from 'react-native'
+import { connect } from 'react-redux'
+import { startChat } from '../../../redux/reducers/actions'
 
 import styles from './styles'
 
@@ -24,30 +26,70 @@ function getTimeString(listing) {
   return time
 }
 
-const ListingDetail = (props) => {
-  const author = props.navigation.state.params.author
-  const bio = props.navigation.state.params.bio
-  const year = props.navigation.state.params.year
-  const listing = props.navigation.state.params.listing
-  const params = props.navigation.state.params
-  return (
-    <View style={styles.root}>
-      <View style={styles.profile}>
-        {renderImage(listing)}
+class ListingDetail extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      // listing,
+      // params: props.navigation.state.params,
+    }
+    // console.log('LISTING DETAIL PROPS')
+    // console.log(props)
+  }
+
+  // const author = props.navigation.state.params.author
+  // const bio = props.navigation.state.params.bio
+  // const year = props.navigation.state.params.year
+  render() {
+    const params = this.props.navigation.state.params
+    const listing = this.props.navigation.state.params.listing
+    // console.log('LISTING IN RENDER PROPS')
+    // console.log(this.props)
+    // console.log('LISTING IN RENDER STATE')
+    // console.log(listing)
+    return (
+      <View style={styles.root}>
         <View style={styles.profile}>
-          <Text style={styles.text}> Author: {listing.author.username}</Text>
-          <Text style={styles.text}> DBA Amount: {listing.amount} </Text>
-          <Text style={styles.text}> Location: {listing.location} </Text>
-          <Text style={styles.text}> Time: {getTimeString(listing)}</Text>
-          <Text style={styles.info}> Additional Information: {listing.description}</Text>
+          {renderImage(listing)}
+          <View style={styles.profile}>
+            <Text style={styles.text}> Author:{listing.author.username}</Text>
+            <Text style={styles.text}> DBA Amount: {listing.amount} </Text>
+            <Text style={styles.text}> Location: {listing.location} </Text>
+            <Text style={styles.text}> Time: {getTimeString(listing)}</Text>
+            <Text style={styles.info}> Additional Information: {listing.description}</Text>
+          </View>
+        </View>
+        <View>
+          <Button
+            onPress={() => {
+              this.props.startChat(
+                {
+                  authorID: this.props.user.id,
+                  otherID: listing.author._id,
+
+                }, this.props, params)/* props.navigation.navigate('ChatDetail', { params }) */
+            }}
+            title="Start Chat"
+          />
+          <Button onPress={() => { this.props.navigation.navigate('UserProf', { params }) }} title="View Profile" />
         </View>
       </View>
-      <View>
-        <Button onPress={() => { props.navigation.navigate('ChatDetail', { params }) }} title="Start Chat" />
-        <Button onPress={() => { props.navigation.navigate('UserProf', { params }) }} title="View Profile" />
-      </View>
-    </View>
-  )
+    )
+  }
 }
 
-export default ListingDetail
+const mapStateToProps = state => (
+  {
+    listings: state.listings.all,
+    chats: state.chats.all,
+    user: state.auth.user,
+  }
+)
+
+const mapDispatchToProps = {
+  startChat,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListingDetail)
+
+// export default ListingDetail

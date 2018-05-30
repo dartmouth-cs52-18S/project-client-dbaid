@@ -2,13 +2,21 @@
 import { ActionTypes } from './types'
 
 const initialState = {
-  all: [],
-  selected: {},
+  chatID: '',
+  chats: [],
 }
+
 const ChatsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.GET_CHATS:
-      return Object.assign({}, state, { all: action.payload.result })
+      return Object.assign({}, state, { chats: action.chats })
+    // case ActionTypes.CREATE_CHAT:
+    //   return {
+    //     chatID: action.chat.id,
+    //     chats: [...state.chats, action.chat],
+    //   }
+    case ActionTypes.SET_CHAT:
+      return Object.assign({}, state, { chatID: action.chatID })
     default:
       return state
   }
