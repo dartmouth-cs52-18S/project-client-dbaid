@@ -52,16 +52,20 @@ class SignUp extends Component {
             <Image source={{ uri: profilePic }} style={{ width: 200, height: 200, alignSelf: 'center' }} />) : null}
           <TextField
             style={styles.inputField}
+            autoCapitalize="none"
             label="Email"
             onChangeText={email => this.setState({ email })}
           />
           <TextField
             secureTextEntry
+            autoCapitalize="none"
             label="Password"
             onChangeText={password => this.setState({ password })}
           />
           <TextField
             label="Bio"
+            multiline
+            numberOfLines={5}
             onChangeText={bio => this.setState({ bio })}
           />
           <TextField
