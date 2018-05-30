@@ -21,6 +21,14 @@ class Local extends Component {
     this._getLocationAsync()
   }
 
+  getTimeString(listing) {
+    const date = new Date(listing.startTime)
+    if (listing.startTime === null || date.toLocaleTimeString() === undefined) return ('None')
+    const time = date.toLocaleTimeString()
+    console.log(time)
+    return time
+  }
+
   _getLocationAsync = async () => {
     const { status } = await Permissions.askAsync(Permissions.LOCATION)
     if (status !== 'granted') {
@@ -47,11 +55,8 @@ class Local extends Component {
       location.coords.longitude > -72.290 && location.coords.longitude < -72.288) {
       this.setState({ location: 'Collis' })
       console.log(this.state.location)
-    } else {
-      this.setState({ location })
-      console.log(this.state.location)
     }
-    this.setState({ location: 'Baker' })
+    // this.setState({ location: null })
     this.props.fetchLocationListings(this.state.location)
 
     const willFocusSubscription = this.props.navigation.addListener(
@@ -79,8 +84,9 @@ class Local extends Component {
   render() {
     if (this.state.location == null) {
       return (
-        <View>
-          <Text> Welcome </Text>
+        <View style={styles.welcome}>
+          <Text style={styles.locationText}>
+          Uh oh, you aren&#39;t at one of Dartmouth&#39;s fine dining establishments </Text>
         </View>
       )
     }

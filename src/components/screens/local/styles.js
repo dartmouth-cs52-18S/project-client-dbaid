@@ -11,8 +11,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '100%',
     height: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
   },
   image: {
     width: 75,
@@ -32,8 +30,7 @@ const styles = StyleSheet.create({
   welcome: {
     flex: 4,
     flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginLeft: 5,
   },
   container: {
     flex: 5,
