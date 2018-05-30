@@ -4,6 +4,8 @@ import { View, Text } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MainNavigator from './main_stack_nav'
 import ChatNavigator from './chat_stack_nav'// components/screens/chatList/chatList'
+import LocalNavigator from './local_stack_nav'
+
 import Profile from '../components/screens/selfProf/selfProf'
 
 // const ChatTab = () => <View style={{ flex: 1,
@@ -13,6 +15,7 @@ import Profile from '../components/screens/selfProf/selfProf'
 const MainTabBar = createBottomTabNavigator({
   DBA: MainNavigator,
   Chat: ChatNavigator,
+  Local: LocalNavigator,
   Me: Profile,
 }, {
   navigationOptions: ({ navigation }) => ({
@@ -23,9 +26,12 @@ const MainTabBar = createBottomTabNavigator({
         iconName = `ios-card${focused ? '' : '-outline'}`
       } else if (routeName === 'Chat') {
         iconName = `ios-chatbubbles${focused ? '' : '-outline'}`
+      } else if (routeName === 'Local') {
+        iconName = `ios-pin${focused ? '' : '-outline'}`
       } else if (routeName === 'Me') {
         iconName = `ios-contact${focused ? '' : '-outline'}`
       }
+
       // You can return any component that you like here! We usually use an
       // icon component from react-native-vector-icons
       return <Ionicons name={iconName} size={25} color={tintColor} />

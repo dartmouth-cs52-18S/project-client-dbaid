@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Button, ScrollView, Image, TouchableOpacity, Platform } from 'react-native'
+import { Constants, Location, Permissions } from 'expo'
 
 import { connect } from 'react-redux'
 import { fetchListings } from '../../../redux/reducers/actions'
@@ -10,7 +11,8 @@ class Landing extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      message: '',
+      location: null,
+      errorMessage: null,
     }
     this.renderImage = this.renderImage.bind(this)
     this.getTimeString = this.getTimeString.bind(this)
@@ -18,6 +20,12 @@ class Landing extends Component {
 
   componentDidMount = () => {
     this.props.fetchListings()
+    const willFocusSubscription = this.props.navigation.addListener(
+      'willFocus',
+      (payload) => {
+        this.props.fetchListings()
+      },
+    )
   }
 
   getTimeString(listing) {
@@ -27,6 +35,19 @@ class Landing extends Component {
     console.log(time)
     return time
   }
+
+  _getLocationAsync = async () => {
+    const { status } = await Permissions.askAsync(Permissions.LOCATION)
+    if (status !== 'granted') {
+      this.setState({
+        errorMessage: 'Permission to access location was denied',
+      })
+    }
+
+    const location = await Location.getCurrentPositionAsync({})
+    this.setState({ location })
+  };
+
 
   refreshScreen = () => {
     this.props.fetchListings()

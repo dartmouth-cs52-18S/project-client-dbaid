@@ -51,18 +51,14 @@ class Create extends Component {
       value: 'Foco',
     }, {
       value: 'Cube',
-    },
-    {
+    }, {
       value: 'Onion',
-    },
-    {
+    }, {
       value: 'McLaughlin',
-    },
-    {
+    }, {
       value: 'East Wheezy',
-    },
+    }]
 
-    ]
     return (
       <ScrollView style={styles.root}>
         <View style={styles.amount}>
