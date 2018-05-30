@@ -62,12 +62,13 @@ class ListingDetail extends Component {
         <View>
           <Button
             onPress={() => {
-              this.props.startChat(
+              /* this.props.startChat(
                 {
                   authorID: this.props.user.id,
                   otherID: listing.author._id,
 
-                }, this.props, params)/* props.navigation.navigate('ChatDetail', { params }) */
+                }, this.props, params) */
+              this.props.navigation.navigate('ChatDetail', { params })
             }}
             title="Start Chat"
           />

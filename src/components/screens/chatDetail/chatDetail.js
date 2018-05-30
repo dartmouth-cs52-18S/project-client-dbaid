@@ -46,27 +46,27 @@ class ChatDetail extends Component {
     this.imagePath = this.imagePath.bind(this)
   }
 
-  componentDidMount() {
-    // this.setState({
-    //   messages: [
-    //     {
-    //       // _id: 1,
-    //       text: 'Sup boys',
-    //       createdAt: new Date(),
-    //       userID:
-    //       // user: {
-    //       //   _id: 2,
-    //       //   listing: this.props.navigation.state.params.params.listing,
-    //       //   avatar: require('../../../../assets/profileOne.png'),
-    //       // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
-    //       // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
-    //       // },
-    //     },
-    //   ],
-    // })
+  componentWillMount() {
+    this.setState({
+      messages: [
+        {
+          _id: 1,
+          text: 'Sup boys',
+          createdAt: new Date(),
+          // userID:
+          user: {
+            _id: 2,
+            listing: this.props.navigation.state.params.params.listing,
+            avatar: require('../../../../assets/profileOne.png'),
+          // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
+          // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
+          },
+        },
+      ],
+    })
     console.log('chat PROPS?')
     console.log(this.props)
-    this.props.fetchMessages(this.props.navigation.state.params.chat.id)
+    // this.props.fetchMessages(this.props.navigation.state.params.chat.id)
   }
 
 
