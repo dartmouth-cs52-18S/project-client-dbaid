@@ -116,6 +116,7 @@ class Create extends Component {
               isVisible={this.state.isDateTimePickerVisibleStart}
               onConfirm={this.handleDatePickedStart}
               onCancel={this.hideDateTimePickerStart}
+              maximumDate={endTime}
             />
             <TouchableOpacity onPress={this.showDateTimePickerEnd}>
               <Text>Choose an end time: </Text>
@@ -128,6 +129,7 @@ class Create extends Component {
               isVisible={this.state.isDateTimePickerVisibleEnd}
               onConfirm={this.handleDatePickedEnd}
               onCancel={this.hideDateTimePickerEnd}
+              minimumDate={startTime}
             />
           </View>
           <TextField
