@@ -37,6 +37,7 @@ export function signinUser(signin, props) {
         props.navigation.navigate('AppFlow', props)
       })
       .catch((error) => {
+        Alert.alert('Sign in failed. Double check your email and password!')
         dispatch(authError('Sign In Failed'))
         if (error.response) {
           // The request was made and the server responded with a status code
