@@ -56,7 +56,7 @@ class ChatDetail extends Component {
           user: {
             _id: 2,
             listing: this.props.navigation.state.params.params.listing,
-            avatar: require('../../../../assets/profileOne.png'),
+            avatar: require('../../../../assets/default.png'),
             // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
             // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
           },
