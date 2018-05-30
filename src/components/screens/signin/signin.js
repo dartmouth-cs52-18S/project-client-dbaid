@@ -30,11 +30,13 @@ class SignIn extends Component {
             Sign in to access the app!
           </Text>
           <TextField
+            autoCapitalize="none"
             label="Email"
             onChangeText={email => this.setState({ email })}
           />
           <TextField
             secureTextEntry
+            autoCapitalize="none"
             label="Password"
             onChangeText={password => this.setState({ password })}
           />
