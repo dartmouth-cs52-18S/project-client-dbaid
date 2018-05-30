@@ -17,7 +17,7 @@ class Create extends Component {
       name: '',
       description: '',
       amount: 0,
-      location: '',
+      location: 'Anywhere',
     }
     console.log('CREATE PROPS')
     console.log(props)
@@ -45,6 +45,7 @@ class Create extends Component {
               totalWidth={400}
               totalHeight={100}
               iconSize={25}
+              minValue={0}
               step={1}
               valueType="real"
               rounded
@@ -59,6 +60,7 @@ class Create extends Component {
           <Dropdown
             label="Donation Location"
             data={data}
+            value={'Anywhere'}
             onChangeText={(location, index, dat) => {
               this.setState({ location })
               // console.log(dat)
