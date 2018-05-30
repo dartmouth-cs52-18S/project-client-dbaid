@@ -16,16 +16,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: 75,
-    height: 75,
+    width: 100,
+    height: 100,
     borderRadius: 5,
     backgroundColor: 'white',
   },
   entries: {
-    width: '25%',
+    width: '33%',
     height: 100,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 20,
   },
   flatlist: {
     height: 200,
