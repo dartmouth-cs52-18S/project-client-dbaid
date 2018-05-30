@@ -16,6 +16,14 @@ function renderImage(listing) {
   return (<Image source={{ uri: base64 }} style={styles.image} />)
 }
 
+function getTimeString(listing) {
+  const date = new Date(listing.startTime)
+  if (listing.startTime === null || date.toLocaleTimeString() === undefined) return ('None')
+  const time = date.toLocaleTimeString()
+  console.log(time)
+  return time
+}
+
 const ListingDetail = (props) => {
   const author = props.navigation.state.params.author
   const bio = props.navigation.state.params.bio
@@ -30,6 +38,7 @@ const ListingDetail = (props) => {
           <Text style={styles.text}> Author: {listing.author.username}</Text>
           <Text style={styles.text}> DBA Amount: {listing.amount} </Text>
           <Text style={styles.text}> Location: {listing.location} </Text>
+          <Text style={styles.text}> Time: {getTimeString(listing)}</Text>
           <Text style={styles.info}> Additional Information: {listing.description}</Text>
         </View>
       </View>
