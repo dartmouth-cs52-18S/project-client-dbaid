@@ -23,11 +23,13 @@ class SignIn extends Component {
       <View>
         <View>
           <TextField
+            autoCapitalize="none"
             label="Email"
             onChangeText={email => this.setState({ email })}
           />
           <TextField
             secureTextEntry
+            autoCapitalize="none"
             label="Password"
             onChangeText={password => this.setState({ password })}
           />
