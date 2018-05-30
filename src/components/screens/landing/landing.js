@@ -4,7 +4,6 @@ import { Constants, Location, Permissions } from 'expo'
 
 import { connect } from 'react-redux'
 import { fetchListings } from '../../../redux/reducers/actions'
-import { signoutUser } from '../../../actions/index'
 
 import styles from './styles'
 
@@ -16,6 +15,7 @@ class Landing extends Component {
       errorMessage: null,
     }
     this.renderImage = this.renderImage.bind(this)
+    this.getTimeString = this.getTimeString.bind(this)
   }
 
   componentDidMount = () => {
@@ -28,6 +28,13 @@ class Landing extends Component {
     )
   }
 
+  getTimeString(listing) {
+    const date = new Date(listing.startTime)
+    if (listing.startTime === null || date.toLocaleTimeString() === undefined) return ('None')
+    const time = date.toLocaleTimeString()
+    console.log(time)
+    return time
+  }
 
   _getLocationAsync = async () => {
     const { status } = await Permissions.askAsync(Permissions.LOCATION)
@@ -41,13 +48,13 @@ class Landing extends Component {
     this.setState({ location })
   };
 
+
   refreshScreen = () => {
     this.props.fetchListings()
   }
 
   renderImage(listing) {
     if (listing.author === null || listing.author.profilePic === null) {
-      console.log('APPLE')
       return (
         <Image source={require('../../../../assets/default.png')} style={styles.image} />
       )
@@ -71,10 +78,10 @@ class Landing extends Component {
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing }) }} style={styles.entries} key={listing._id}>
               {this.renderImage(listing)}
               <Text> ${listing.amount} - {listing.location} </Text>
+              <Text>{this.getTimeString(listing)}</Text>
             </TouchableOpacity>
           ))}
         </View>
-        <Button onPress={() => this.props.signoutUser(this.props)} title="Sign Out" />
       </ScrollView>
     )
   }
@@ -88,7 +95,6 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = {
   fetchListings,
-  signoutUser,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, Button, Text } from 'react-native'
+import { View, Button, Text, TouchableOpacity, ScrollView } from 'react-native'
 import { TextField } from 'react-native-material-textfield'
 import { Dropdown } from 'react-native-material-dropdown'
 import NumericInput from 'react-native-numeric-input'
+import DateTimePicker from 'react-native-modal-datetime-picker'
 import { connect } from 'react-redux'
 
 import { createListing } from '../../../redux/reducers/actions'
@@ -17,14 +18,27 @@ class Create extends Component {
       name: '',
       description: '',
       amount: 0,
-      location: '',
+      location: 'Anywhere',
+      isDateTimePickerVisible: false,
+      startTime: new Date(),
     }
-    console.log('CREATE PROPS')
-    console.log(props)
   }
 
 
+  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+
+  _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+
+  _handleDatePicked = (time) => {
+    console.log('BANANA')
+    console.log('A date has been picked: ', time.toLocaleString())
+    this.setState({ startTime: time })
+    this._hideDateTimePicker()
+  };
+
+
   render() {
+    const { startTime } = this.state
     const data = [{
       value: 'Collis',
     }, {
@@ -32,16 +46,21 @@ class Create extends Component {
     }, {
       value: 'KAF',
     }, {
-      value: 'Novak',
+      value: 'Novack',
     }, {
-      value: 'FOCO',
+      value: 'Foco',
     }, {
       value: 'Cube',
     }, {
       value: 'Onion',
+    }, {
+      value: 'McLaughlin',
+    }, {
+      value: 'East Wheezy',
     }]
+
     return (
-      <View style={styles.root}>
+      <ScrollView style={styles.root}>
         <View style={styles.amount}>
           <Text style={styles.amountTitle}> Enter DBA Donation Amount </Text>
           <View style={styles.numberInput}>
@@ -70,6 +89,20 @@ class Create extends Component {
               // console.log(dat)
             }}
           />
+
+          <View style={{ flex: 1 }}>
+            <TouchableOpacity onPress={this._showDateTimePicker}>
+              <Text>Choose a start time: </Text>
+              <Text>{startTime.toLocaleTimeString()}</Text>
+            </TouchableOpacity>
+            <DateTimePicker
+              mode="time"
+              titleIOS="Choose a start time"
+              isVisible={this.state.isDateTimePickerVisible}
+              onConfirm={this._handleDatePicked}
+              onCancel={this._hideDateTimePicker}
+            />
+          </View>
           <TextField
             label="Extra Information"
             value={this.state.descripton}
@@ -79,7 +112,6 @@ class Create extends Component {
 
           <Button
             onPress={() => {
-              console.log(this.props.user)
               this.props.createListing(
 
                 {
@@ -87,6 +119,7 @@ class Create extends Component {
                   description: this.state.description,
                   amount: this.state.amount,
                   location: this.state.location,
+                  startTime: this.state.startTime,
                 },
                 this.props, this.props.navigation.state.params.refresh,
               )
@@ -94,7 +127,7 @@ class Create extends Component {
             title="Create Listing"
           />
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }

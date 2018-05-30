@@ -57,7 +57,7 @@ class Local extends Component {
     const willFocusSubscription = this.props.navigation.addListener(
       'willFocus',
       (payload) => {
-        this.props.fetchLocationListings()
+        this.props.fetchLocationListings(this.state.location)
       },
     )
   };
@@ -101,6 +101,7 @@ class Local extends Component {
               <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing }) }} style={styles.entries} key={listing._id}>
                 {this.renderImage(listing)}
                 <Text> ${listing.amount} - {listing.location} </Text>
+                <Text>{this.getTimeString(listing)}</Text>
               </TouchableOpacity>
             ))}
           </View>
