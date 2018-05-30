@@ -15,6 +15,18 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
+  bar: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  barItem: {
+    marginLeft: 10,
+    marginRight: 10,
+  },
   image: {
     width: 100,
     height: 100,
