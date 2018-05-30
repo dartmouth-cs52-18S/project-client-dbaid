@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Button, TextInput } from 'react-native'
+import { View, Button, TextInput, Image, Text } from 'react-native'
 import { TextField } from 'react-native-material-textfield'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -22,6 +22,13 @@ class SignIn extends Component {
     return (
       <View>
         <View>
+          <Image
+            style={{ width: '100%', height: 300, alignSelf: 'center' }}
+            source={require('../../../../assets/dartmouth.png')}
+          />
+          <Text style={{ fontSize: 30, alignSelf: 'center', marginTop: 10 }}>
+            Sign in to access the app!
+          </Text>
           <TextField
             autoCapitalize="none"
             label="Email"
@@ -38,6 +45,14 @@ class SignIn extends Component {
           <Button
             onPress={() => { this.props.signinUser(this.state, this.props) }}
             title="Sign In"
+          />
+          <Text style={{ fontSize: 20, alignSelf: 'center', marginTop: 10, marginBottom: 20 }}>
+            No account? Make one today!
+          </Text>
+          <Button
+            style={styles.signup}
+            onPress={() => { this.props.navigation.navigate('SignUp') }}
+            title="Sign Up"
           />
         </View>
       </View>

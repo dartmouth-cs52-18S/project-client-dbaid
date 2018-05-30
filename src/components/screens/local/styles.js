@@ -23,6 +23,8 @@ const styles = StyleSheet.create({
     height: 100,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 20,
   },
   flatlist: {
     height: 200,
@@ -31,6 +33,7 @@ const styles = StyleSheet.create({
     flex: 4,
     flexDirection: 'column',
     marginLeft: 5,
+    alignItems: 'center',
   },
   container: {
     flex: 5,
