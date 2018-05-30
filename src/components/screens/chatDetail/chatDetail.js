@@ -29,7 +29,7 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 import { GiftedChat } from 'react-native-gifted-chat'
 import { fetchMessages, sendMessage } from '../../../redux/reducers/actions'
 
@@ -40,11 +40,11 @@ class ChatDetail extends Component {
     super(props)
     this.state = {
       messages: [],
-      userId: null,
+      // avatar: require('../../../../assets/profileOne.png'),
     }
-  }
 
-  // const userID = props.navigation.state.params.userID
+    this.imagePath = this.imagePath.bind(this)
+  }
 
   componentWillMount() {
     this.setState({
@@ -55,15 +55,16 @@ class ChatDetail extends Component {
           createdAt: new Date(),
           user: {
             _id: 2,
-            author: this.props.navigation.state.params.author,
-            bio: this.props.navigation.state.params.bio,
-            year: this.props.navigation.state.params.year,
+            listing: this.props.navigation.state.params.params.listing,
             avatar: require('../../../../assets/profileOne.png'),
+            // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
+            // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
           },
         },
       ],
     })
   }
+
 
   onSend(messages = []) {
     this.setState(previousState => ({
@@ -71,9 +72,26 @@ class ChatDetail extends Component {
     }))
   }
 
+  imagePath(listing) {
+    if (listing.author === null || listing.author.profilePic === null) {
+      return (
+        require('../../../../assets/default.png')
+        // <Image source={require('../../../../assets/default.png')} style={styles.image} />
+      )
+    }
+    const base64 = listing.author.profilePic
+    return { uri: base64 }// (<Image source={{ uri: base64 }} style={styles.image} />)
+  }
+
+  renderAvatar(listing) {
+    this.setState({
+      avatar: this.imagePath(this.props.navigation.state.params.params.listing) },
+    )
+  }
+
   render() {
-    // console.log('chat props')
-    // console.log(this.props)
+    console.log('chat listing?')
+    console.log(this.props.navigation.state.params.params)
     if (this.props == null) {
       return (
         <View />
@@ -83,10 +101,7 @@ class ChatDetail extends Component {
     return (
       <GiftedChat
         messages={this.state.messages}
-        params={this.props.navigation.state.params}
-        // author={this.state.author}
-        // bio={this.state.bio}
-        // year={this.state.year}
+        params={this.state.listing}
         onSend={messages => this.onSend(messages)}
         onPressAvatar={(params) => { this.props.navigation.navigate('UserProf', { params }) }}
         user={{

@@ -52,7 +52,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "email-existence": "^0.1.6",
-    "exp": "^54.0.0",
+    "exp": "^54.0.1",
     "expo": "^22.0.2",
     "lodash": "^4.17.4",
     "react": "16.0.0-beta.5",

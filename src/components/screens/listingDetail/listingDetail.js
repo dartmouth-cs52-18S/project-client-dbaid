@@ -11,8 +11,8 @@ function renderImage(listing) {
     )
   }
   const base64 = listing.author.profilePic
-  console.log('BANANA')
-  console.log(base64)
+  // console.log('BANANA')
+  // console.log(base64)
   return (<Image source={{ uri: base64 }} style={styles.image} />)
 }
 
@@ -30,22 +30,20 @@ const ListingDetail = (props) => {
   const year = props.navigation.state.params.year
   const listing = props.navigation.state.params.listing
   const params = props.navigation.state.params
-  // console.log(props.navigation.state.params)
-
   return (
     <View style={styles.root}>
       <View style={styles.profile}>
         {renderImage(listing)}
         <View style={styles.profile}>
           <Text style={styles.text}> Author: {listing.author.username}</Text>
-          <Text style={styles.text}> Offering: ${listing.amount} </Text>
+          <Text style={styles.text}> DBA Amount: {listing.amount} </Text>
           <Text style={styles.text}> Location: {listing.location} </Text>
           <Text style={styles.text}> Time: {getTimeString(listing)}</Text>
           <Text style={styles.info}> Additional Information: {listing.description}</Text>
         </View>
       </View>
       <View>
-        <Button onPress={() => { props.navigation.navigate('ChatDetail', { author, bio, year }) }} title="Start Chat" />
+        <Button onPress={() => { props.navigation.navigate('ChatDetail', { params }) }} title="Start Chat" />
         <Button onPress={() => { props.navigation.navigate('UserProf', { params }) }} title="View Profile" />
       </View>
     </View>

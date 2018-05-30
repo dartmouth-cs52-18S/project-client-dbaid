@@ -7,8 +7,8 @@ import Create from '../components/screens/createListing/createListing'
 import Landing from '../components/screens/landing/landing'
 import ListingDetail from '../components/screens/listingDetail/listingDetail'
 import UserProf from '../components/screens/userProf/userProf'
-import ChatDetail from '../components/screens/chatDetail/chatDetail'
-import ChatList from '../components/screens/chatList/chatList'
+// import ChatDetail from '../components/screens/chatDetail/chatDetail'
+// import ChatList from '../components/screens/chatList/chatList'
 
 
 // nest stack navigator to handle two internal views
@@ -18,8 +18,8 @@ const MainStackNavigator = createStackNavigator({
   Create,
   ListingDetail,
   UserProf,
-  ChatDetail,
-  ChatList,
+  // ChatDetail,
+  // ChatList,
 })
 
 

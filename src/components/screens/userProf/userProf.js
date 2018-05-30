@@ -11,8 +11,8 @@ function renderImage(listing) {
     )
   }
   const base64 = listing.author.profilePic
-  console.log('BANANA')
-  console.log(base64)
+  // console.log('BANANA')
+  // console.log(base64)
   return (<Image source={{ uri: base64 }} style={styles.image} />)
 }
 
@@ -20,6 +20,7 @@ const UserProf = (props) => {
   const author = props.navigation.state.params.params.listing.author.username
   const bio = props.navigation.state.params.params.listing.author.bio
   const year = props.navigation.state.params.params.listing.author.year
+  const email = props.navigation.state.params.params.listing.author.email
   return (
     <View style={styles.root}>
       <View style={styles.profile}>
@@ -30,6 +31,7 @@ const UserProf = (props) => {
         </View>
       </View>
       <Text style={styles.under}>{ bio }</Text>
+      <Text style={styles.footer}> Contact Information: { email }</Text>
     </View>
   )
 }
