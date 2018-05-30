@@ -33,6 +33,12 @@ class Create extends Component {
       value: 'KAF',
     }, {
       value: 'Novak',
+    }, {
+      value: 'FOCO',
+    }, {
+      value: 'Cube',
+    }, {
+      value: 'Onion',
     }]
     return (
       <View style={styles.root}>
