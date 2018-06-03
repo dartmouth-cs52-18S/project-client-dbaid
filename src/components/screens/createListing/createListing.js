@@ -34,8 +34,8 @@ class Create extends Component {
   hideDateTimePickerStart = () => this.setState({ isDateTimePickerVisibleStart: false });
 
   handleDatePickedStart = (time) => {
-    console.log('BANANA')
-    console.log('A date has been picked: ', time.toLocaleString())
+    // console.log('BANANA')
+    // console.log('A date has been picked: ', time.toLocaleString())
     this.setState({ startTime: time })
     this.hideDateTimePickerStart()
   };
@@ -45,8 +45,8 @@ class Create extends Component {
   hideDateTimePickerEnd = () => this.setState({ isDateTimePickerVisibleEnd: false });
 
   handleDatePickedEnd = (time) => {
-    console.log('APPLE')
-    console.log('A date has been picked: ', time.toLocaleString())
+    // console.log('APPLE')
+    // console.log('A date has been picked: ', time.toLocaleString())
     this.setState({ endTime: time })
     this.hideDateTimePickerEnd()
   };

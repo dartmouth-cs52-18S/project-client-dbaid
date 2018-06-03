@@ -39,7 +39,7 @@ class ChatDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      message: '',
+      messages: '',
       // avatar: require('../../../../assets/profileOne.png'),
     }
 
@@ -124,7 +124,7 @@ class ChatDetail extends Component {
 const mapStateToProps = state => (
   {
     user: state.auth.user,
-    messages: state.messages[state.chats.chatID],
+    // messages: state.messages[state.chats.chatID],
   }
 )
 

@@ -7,7 +7,7 @@ import styles from './styles'
 
 function renderImage(listing) {
   if (listing.author === null || listing.author.profilePic === null) {
-    console.log('Pineapple')
+    console.log('Img for listing is null')
     return (
       <Image source={require('../../../../assets/default.png')} style={styles.image} />
     )
@@ -22,7 +22,7 @@ function getTimeString(listing) {
   const date = new Date(listing.startTime)
   if (listing.startTime === null || date.toLocaleTimeString() === undefined) return ('None')
   const time = date.toLocaleTimeString()
-  console.log(time)
+  // console.log(time)
   return time
 }
 

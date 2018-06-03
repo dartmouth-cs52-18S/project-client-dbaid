@@ -33,7 +33,7 @@ class Landing extends Component {
     const date = new Date(listing.startTime)
     if (listing.startTime === null || date.toLocaleTimeString() === undefined) return ('None')
     const time = date.toLocaleTimeString()
-    console.log(time)
+    // console.log(time)
     return time
   }
 
@@ -70,7 +70,8 @@ class Landing extends Component {
         <View />
       )
     }
-    console.log(`listings: ${this.props.listings}`)
+    console.log('listings on landing')
+    console.log(this.props.listings)
     return (
       <ScrollView style={styles.flatlist}>
         <View style={styles.bar}>
