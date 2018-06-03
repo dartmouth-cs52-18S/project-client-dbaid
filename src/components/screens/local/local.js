@@ -57,7 +57,7 @@ class Local extends Component {
       console.log(this.state.location)
     } else if (location.coords.latitude < 43.703298 && location.coords.latitude > 43.702794 &&
       location.coords.longitude > -72.290257 && location.coords.longitude < -72.291858) {
-      this.setState({ location: 'FOCO' })
+      this.setState({ location: 'Foco' })
       console.log(this.state.location)
     } else if (location.coords.latitude < 43.702928 && location.coords.latitude > 43.702143 &&
       location.coords.longitude > -72.284596 && location.coords.longitude < -72.285575) {
