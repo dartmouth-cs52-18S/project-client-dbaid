@@ -93,18 +93,23 @@ export function createListing(listing, props, refresh) {
 }
 
 
-export function startChat(ids, props, params) {
+export function createChat(ids, props, params) {
   console.log('TRYInG TO START CHAT!')
   console.log(ids)
-  // console.log(props)
-  return () => {
+  console.log('props')
+  console.log(props)
+  console.log('params')
+  console.log(params)
+  return (dispatch) => {
     axios.post(`${ROOT_URL}/chats`, ids, {
       headers: {
         'Content-Type': 'application/json',
       },
     })
       .then((response) => {
-        // dispatch({ type: ActionTypes.CREATE_CHAT, payload: response.data })
+        console.log('reponse')
+        console.log(response)
+        dispatch({ type: ActionTypes.CREATE_CHAT, payload: response.data })
         console.log('New Chat Created! NAVIGATE TO TAB')
         props.navigation.navigate('ChatDetail', { params }) // Go to individual chat within Big Chat Nav
       }).catch((error) => {
@@ -160,6 +165,18 @@ export function fetchChats() {
   }
 }
 
+export function setChat(chatID) {
+  return (dispatch) => {
+    dispatch({ type: ActionTypes.SET_CHAT, payload: chatID })
+  }
+}
+
+export function sendMessage(chatID, message) {
+  return (dispatch) => {
+    dispatch({ type: ActionTypes.SEND_MESSAGE, payload: { chatID, message } })
+  }
+}
+
 // fetchMessages
 export function fetchMessages(otherID) {
   return (dispatch) => {
@@ -168,6 +185,7 @@ export function fetchMessages(otherID) {
       console.log(response.data)
       dispatch({ type: ActionTypes.GET_CHAT, payload: response.data })
     }).catch((error) => {
+      console.log('fetch messages error')
       console.error(error)
       if (error.response) {
         // The request was made and the server responded with a status code

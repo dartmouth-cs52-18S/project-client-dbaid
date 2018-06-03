@@ -67,7 +67,7 @@ class ChatDetail extends Component {
     })
     console.log('chat PROPS?')
     console.log(this.props)
-    // this.props.fetchMessages(this.props.navigation.state.params.chat.id)
+    this.props.fetchMessages(this.props.navigation.state.params.params.listing.author.id)
   }
 
 
@@ -124,7 +124,7 @@ class ChatDetail extends Component {
 const mapStateToProps = state => (
   {
     user: state.auth.user,
-    // messages: state.messages[state.chats.chatID],
+    chats: state.chats,
   }
 )
 

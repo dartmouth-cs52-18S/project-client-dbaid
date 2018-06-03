@@ -6,8 +6,10 @@ const initialState = {}
 const Messages = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.GET_MESSAGES:
+      console.log('the GET_MESSAGES reducer got called;')
       return Object.assign({}, state, { [action.id]: action.messages })
     case ActionTypes.SEND_MESSAGE:
+      console.log('the SEND_MESSAGE reducer got called;')
       if (state[action.chatID]) {
         return {
           ...state,
@@ -16,8 +18,7 @@ const Messages = (state = initialState, action) => {
         }
       }
       return {
-        ...state,
-        [action.chatID]: [action.message],
+        ...state, [action.chatID]: [action.message],
       }
     default:
       return state
