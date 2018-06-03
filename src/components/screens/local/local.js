@@ -55,8 +55,23 @@ class Local extends Component {
       location.coords.longitude > -72.290 && location.coords.longitude < -72.288) {
       this.setState({ location: 'Collis' })
       console.log(this.state.location)
+    } else if (location.coords.latitude < 43.703298 && location.coords.latitude > 43.702794 &&
+      location.coords.longitude > -72.290257 && location.coords.longitude < -72.291858) {
+      this.setState({ location: 'FOCO' })
+      console.log(this.state.location)
+    } else if (location.coords.latitude < 43.702928 && location.coords.latitude > 43.702143 &&
+      location.coords.longitude > -72.284596 && location.coords.longitude < -72.285575) {
+      this.setState({ location: 'Onion' })
+      console.log(this.state.location)
+    } else if (location.coords.latitude < 43.708108 && location.coords.latitude > 43.706688 &&
+      location.coords.longitude > -72.285398 && location.coords.longitude < -72.287321) {
+      this.setState({ location: 'McLaughlin' })
+      console.log(this.state.location)
+    } else if (location.coords.latitude < 43.704784 && location.coords.latitude > 43.703419 &&
+      location.coords.longitude > -72.290 && location.coords.longitude < -72.284768) {
+      this.setState({ location: 'Wheelock' })
+      console.log(this.state.location)
     }
-    this.setState({ location: 'Baker' })
     this.props.fetchLocationListings(this.state.location)
 
     const willFocusSubscription = this.props.navigation.addListener(
