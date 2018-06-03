@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Button, ScrollView, Image, TouchableOpacity, Platform } from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Constants, Location, Permissions } from 'expo'
 
 import { connect } from 'react-redux'
@@ -72,7 +73,12 @@ class Landing extends Component {
     console.log(`listings: ${this.props.listings}`)
     return (
       <ScrollView style={styles.flatlist}>
-        <Button onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
+        <View style={styles.bar}>
+          <Button style={styles.barItem} onPress={() => { this.props.navigation.navigate('Create', { refresh: this.refreshScreen }) }} title="Create DBA Listing" />
+          <TouchableOpacity style={styles.barItem} onPress={this.refreshScreen}>
+            <Ionicons name={'ios-refresh'} size={35} color={'#000000'} />
+          </TouchableOpacity>
+        </View>
         <View style={styles.entry}>
           {this.props.listings.map(listing => (
             <TouchableOpacity onPress={() => { this.props.navigation.navigate('ListingDetail', { listing }) }} style={styles.entries} key={listing._id}>

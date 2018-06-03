@@ -29,7 +29,7 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, Image } from 'react-native'
+import { View, Image, Text } from 'react-native'
 import { GiftedChat } from 'react-native-gifted-chat'
 import { fetchMessages, sendMessage } from '../../../redux/reducers/actions'
 
@@ -51,15 +51,16 @@ class ChatDetail extends Component {
       messages: [
         {
           _id: 1,
-          text: 'Sup boys',
+          text: 'Hey! When do you want to meet up?',
           createdAt: new Date(),
           // userID:
           user: {
             _id: 2,
             listing: this.props.navigation.state.params.params.listing,
-            avatar: require('../../../../assets/profileOne.png'),
-          // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
-          // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
+
+            avatar: require('../../../../assets/default.png'),
+            // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
+            // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
           },
         },
       ],
@@ -98,9 +99,11 @@ class ChatDetail extends Component {
     console.log(this.props.navigation.state.params.params)
     console.log('chat state')
     console.log(this.state)
-    if (this.props == null) {
+    if (this.props == null || this.props.navigation.state.params == null) {
       return (
-        <View />
+        <View>
+          <Text>You have not started a chat with anyone!</Text>
+        </View>
       )
     }
 

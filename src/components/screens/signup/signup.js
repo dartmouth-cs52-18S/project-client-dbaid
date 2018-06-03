@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Button, TextInput, Image, ScrollView } from 'react-native'
 import { TextField } from 'react-native-material-textfield'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { connect } from 'react-redux'
 import { ImagePicker } from 'expo'
 import { bindActionCreators } from 'redux'
@@ -38,7 +39,7 @@ class SignUp extends Component {
   render() {
     const { profilePic } = this.state
     return (
-      <ScrollView>
+      <KeyboardAwareScrollView>
         <View>
           <TextField
             label="Name"
@@ -49,18 +50,23 @@ class SignUp extends Component {
             onPress={this.pickImage}
           />
           {profilePic ? (
-            <Image source={{ uri: profilePic }} style={{ width: 200, height: 200 }} />) : null}
+            <Image source={{ uri: profilePic }} style={{ width: 200, height: 200, alignSelf: 'center' }} />) : null}
           <TextField
             style={styles.inputField}
+            autoCapitalize="none"
             label="Email"
             onChangeText={email => this.setState({ email })}
           />
           <TextField
+            secureTextEntry
+            autoCapitalize="none"
             label="Password"
             onChangeText={password => this.setState({ password })}
           />
           <TextField
             label="Bio"
+            multiline
+            numberOfLines={5}
             onChangeText={bio => this.setState({ bio })}
           />
           <TextField
@@ -75,7 +81,7 @@ class SignUp extends Component {
             title="Sign Up"
           />
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     )
   }
 }

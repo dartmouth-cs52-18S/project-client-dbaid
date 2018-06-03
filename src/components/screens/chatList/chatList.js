@@ -31,26 +31,26 @@ render() {
     )
   }
   return (
-    <ScrollView>
-      <View>
-        { this.props.chats.map(chat => (
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate('ChatDetail',
-                { chat, user: this.props.user })
-            }}
-            style={styles.entries}
-            key={chat._id}
-          >
-            <Image
-              source={require('../../../../assets/profileOne.png')}
-            />
-            <Text> Individual Chat! </Text>
-          </TouchableOpacity>
-        )) }
-        <Text> Here are all of your chats! </Text>
-      </View>
-    </ScrollView>
+    // <ScrollView>
+    <View style={styles.root}>
+      <Text>You have not started a chat with anyone!</Text>
+    </View>
+  // { this.props.chats.map(chat => (
+  //   <TouchableOpacity
+  //     onPress={() => {
+  //       this.props.navigation.navigate('ChatDetail',
+  //         { chat, user: this.props.user })
+  //     }}
+  //     style={styles.entries}
+  //     key={chat._id}
+  //   >
+  //     <Image
+  //       source={require('../../../../assets/profileOne.png')}
+  //     />
+  //     <Text> Individual Chat! </Text>
+  //   </TouchableOpacity>
+  // )) }
+    // </ScrollView>
   )
 }
 }

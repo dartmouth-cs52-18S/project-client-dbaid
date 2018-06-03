@@ -19,28 +19,41 @@ class Create extends Component {
       description: '',
       amount: 0,
       location: 'Anywhere',
-      isDateTimePickerVisible: false,
+      isDateTimePickerVisibleStart: false,
+      isDateTimePickerVisibleEnd: false,
       startTime: new Date(),
+      endTime: new Date(),
     }
     console.log('create props')
     console.log(props)
   }
 
 
-  _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+  showDateTimePickerStart = () => this.setState({ isDateTimePickerVisibleStart: true });
 
-  _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+  hideDateTimePickerStart = () => this.setState({ isDateTimePickerVisibleStart: false });
 
-  _handleDatePicked = (time) => {
-    // console.log('BANANA')
-    // console.log('A date has been picked: ', time.toLocaleString())
+  handleDatePickedStart = (time) => {
+    console.log('BANANA')
+    console.log('A date has been picked: ', time.toLocaleString())
     this.setState({ startTime: time })
-    this._hideDateTimePicker()
+    this.hideDateTimePickerStart()
+  };
+
+  showDateTimePickerEnd = () => this.setState({ isDateTimePickerVisibleEnd: true });
+
+  hideDateTimePickerEnd = () => this.setState({ isDateTimePickerVisibleEnd: false });
+
+  handleDatePickedEnd = (time) => {
+    console.log('APPLE')
+    console.log('A date has been picked: ', time.toLocaleString())
+    this.setState({ endTime: time })
+    this.hideDateTimePickerEnd()
   };
 
 
   render() {
-    const { startTime } = this.state
+    const { startTime, endTime } = this.state
     const data = [{
       value: 'Collis',
     }, {
@@ -58,7 +71,7 @@ class Create extends Component {
     }, {
       value: 'McLaughlin',
     }, {
-      value: 'East Wheezy',
+      value: 'EW',
     }]
 
     return (
@@ -73,6 +86,8 @@ class Create extends Component {
               totalHeight={100}
               iconSize={25}
               step={1}
+              minValue={0}
+              maxValue={500}
               valueType="real"
               rounded
               textColor="#000000"
@@ -93,16 +108,31 @@ class Create extends Component {
           />
 
           <View style={{ flex: 1 }}>
-            <TouchableOpacity onPress={this._showDateTimePicker}>
+            <TouchableOpacity onPress={this.showDateTimePickerStart}>
               <Text>Choose a start time: </Text>
               <Text>{startTime.toLocaleTimeString()}</Text>
             </TouchableOpacity>
             <DateTimePicker
               mode="time"
+              date={startTime}
               titleIOS="Choose a start time"
-              isVisible={this.state.isDateTimePickerVisible}
-              onConfirm={this._handleDatePicked}
-              onCancel={this._hideDateTimePicker}
+              isVisible={this.state.isDateTimePickerVisibleStart}
+              onConfirm={this.handleDatePickedStart}
+              onCancel={this.hideDateTimePickerStart}
+              maximumDate={endTime}
+            />
+            <TouchableOpacity onPress={this.showDateTimePickerEnd}>
+              <Text>Choose an end time: </Text>
+              <Text>{endTime.toLocaleTimeString()}</Text>
+            </TouchableOpacity>
+            <DateTimePicker
+              mode="time"
+              date={endTime}
+              titleIOS="Choose an end time"
+              isVisible={this.state.isDateTimePickerVisibleEnd}
+              onConfirm={this.handleDatePickedEnd}
+              onCancel={this.hideDateTimePickerEnd}
+              minimumDate={startTime}
             />
           </View>
           <TextField
@@ -123,6 +153,7 @@ class Create extends Component {
                   amount: this.state.amount,
                   location: this.state.location,
                   startTime: this.state.startTime,
+                  endTime: this.state.endTime,
                 },
                 this.props, this.props.navigation.state.params.refresh,
               )
