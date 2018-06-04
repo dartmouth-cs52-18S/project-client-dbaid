@@ -93,25 +93,31 @@ export function createListing(listing, props, refresh) {
 }
 
 
-export function createChat(ids, props, params) {
+export function createChat(ids) {
   console.log('TRYInG TO START CHAT!')
   console.log(ids)
-  console.log('props')
-  console.log(props)
-  console.log('params')
-  console.log(params)
+  // console.log('params')
+  // console.log(params)
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/chats`, ids, {
+    // axios.all([
+    //   axios.post(`${ROOT_URL}/chats/${ids.otherID}`, ids.userID, {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   }),
+    axios.post(`${ROOT_URL}/chats/`, ids.otherID, {
       headers: {
         'Content-Type': 'application/json',
       },
     })
+    // ]) axios.spread(
       .then((response) => {
         console.log('reponse')
         console.log(response)
         dispatch({ type: ActionTypes.CREATE_CHAT, payload: response.data })
-        console.log('New Chat Created! NAVIGATE TO TAB')
-        props.navigation.navigate('ChatDetail', { params }) // Go to individual chat within Big Chat Nav
+        // dispatch({ type: ActionTypes.CREATE_CHAT, payload: response2.data })
+        console.log('New Chats Created! NAVIGATE TO TAB')
+        // props.navigation.navigate('ChatDetail', { params })
       }).catch((error) => {
         console.error(error)
         console.log('JUST ERROR')
@@ -139,15 +145,19 @@ export function createChat(ids, props, params) {
 
 export function fetchChats() {
   return (dispatch) => {
-    axios.get(`${ROOT_URL}/chats`).then((response) => {
-      console.log('fetching all chats')
+    console.log('am i EVEN In THE actioN FOR FETCH..??')
+    // console.log(id)
+    axios.get(`${ROOT_URL}/chats/`).then((response) => {
+      console.log('fetching all chats IN ACTION')
       console.log(response.data)
       dispatch({ type: ActionTypes.GET_CHATS, payload: response.data })
     }).catch((error) => {
+      console.log('ERROR IN FETCH CHAT')
       console.error(error)
       if (error.response) {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
+        console.log('ERROR IN FETCH CHAT RESPONSe')
         console.log(error.response.data)
         console.log(error.response.status)
         console.log(error.response.headers)
@@ -155,11 +165,14 @@ export function fetchChats() {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
+        console.log('ERROR IN FETCH CHAT REQUEST')
         console.log(error.request)
       } else {
         // Something happened in setting up the request that triggered an Error
+        console.log('ERROR IN FETCH CHAT MESSAGE')
         console.log('Error', error.message)
       }
+      console.log('ERROR IN FETCH CHAT CONFIG LOG')
       console.log(error.config)
     })
   }
@@ -183,7 +196,7 @@ export function fetchMessages(otherID) {
     axios.get(`${ROOT_URL}/messages/${otherID}`).then((response) => {
       console.log('fetching all messages')
       console.log(response.data)
-      dispatch({ type: ActionTypes.GET_CHAT, payload: response.data })
+      dispatch({ type: ActionTypes.GET_MESSAGES, payload: response.data })
     }).catch((error) => {
       console.log('fetch messages error')
       console.error(error)
@@ -204,5 +217,83 @@ export function fetchMessages(otherID) {
       }
       console.log(error.config)
     })
+  }
+}
+
+
+export function addFriend(friendID) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/friends`, friendID, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        console.log('ADD FRIENDS IN ACTION')
+        console.log(response.data)
+        dispatch({ type: ActionTypes.ADD_FRIEND, payload: response.data })
+      }).catch((error) => {
+        console.log('ERROR IN FETCH CHAT')
+        console.error(error)
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log('ERROR IN ADD FRIEND RESPONSe')
+          console.log(error.response.data)
+          console.log(error.response.status)
+          console.log(error.response.headers)
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log('ERROR IN ADD FRIEND REQUEST')
+          console.log(error.request)
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('ERROR IN ADD FRIEND MESSAGE')
+          console.log('Error', error.message)
+        }
+        console.log('ERROR IN ADD FRIEND CONFIG LOG')
+        console.log(error.config)
+      })
+  }
+}
+
+
+export function getFriends() {
+  return (dispatch) => {
+    axios.get(`${ROOT_URL}/friends`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        console.log('ADD FRIENDS IN ACTION')
+        console.log(response.data)
+        dispatch({ type: ActionTypes.ADD_FRIEND, payload: response.data })
+      }).catch((error) => {
+        console.log('ERROR IN FETCH CHAT')
+        console.error(error)
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log('ERROR IN ADD FRIEND RESPONSe')
+          console.log(error.response.data)
+          console.log(error.response.status)
+          console.log(error.response.headers)
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log('ERROR IN ADD FRIEND REQUEST')
+          console.log(error.request)
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('ERROR IN ADD FRIEND MESSAGE')
+          console.log('Error', error.message)
+        }
+        console.log('ERROR IN ADD FRIEND CONFIG LOG')
+        console.log(error.config)
+      })
   }
 }

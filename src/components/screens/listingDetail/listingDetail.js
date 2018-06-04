@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, Text, Button, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { startChat } from '../../../redux/reducers/actions'
+import { createChat, fetchChats, setChat } from '../../../redux/reducers/actions'
 
 import styles from './styles'
 
@@ -35,16 +35,32 @@ class ListingDetail extends Component {
     }
     // console.log('LISTING DETAIL PROPS')
     // console.log(props)
+    this.findChat = this.findChat.bind(this)
+  }
+
+  componentDidMount() {
+    console.log('fetching chats')
+    this.props.fetchChats({ userID: this.props.user.id })
+    console.log(this.props)
   }
 
   // const author = props.navigation.state.params.author
   // const bio = props.navigation.state.params.bio
   // const year = props.navigation.state.params.year
+
+
+  findChat = (otherID) => {
+    const findChat = this.props.user.chats.find(
+      chat => chat.otherID === otherID,
+    )
+    return findChat
+  };
+
   render() {
     const params = this.props.navigation.state.params
     const listing = this.props.navigation.state.params.listing
-    // console.log('LISTING IN RENDER PROPS')
-    // console.log(this.props)
+    console.log('LISTING IN RENDER PROPS')
+    console.log(this.props)
     // console.log('LISTING IN RENDER STATE')
     // console.log(listing)
     return (
@@ -62,13 +78,20 @@ class ListingDetail extends Component {
         <View>
           <Button
             onPress={() => {
-              this.props.startChat(
-                {
-                  authorID: this.props.user.id,
-                  otherID: listing.author._id,
-
-                }, this.props, params)
-              // this.props.navigation.navigate('ChatDetail', { params })
+              const chat = this.findChat(listing.author._id)
+              if (chat && chat.id) {
+                this.props.setChat(chat.id)
+                this.props.navigate('ChatDetail', { params })
+              } else {
+                this.props.addFriend(
+                  { friendID: listing.author._id })
+                this.props.createChat(
+                  {
+                    userID: this.props.user.id,
+                    otherID: listing.author._id,
+                  })
+                this.props.navigation.navigate('ChatDetail', { params })
+              }
             }}
             title="Start Chat"
           />
@@ -88,7 +111,9 @@ const mapStateToProps = state => (
 )
 
 const mapDispatchToProps = {
-  startChat,
+  createChat,
+  fetchChats,
+  setChat,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListingDetail)
