@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, Text, Button, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { createChat, fetchChats, setChat } from '../../../redux/reducers/actions'
+import { createChat, fetchChats, setChat, addFriend } from '../../../redux/reducers/actions'
 
 import styles from './styles'
 
@@ -39,8 +39,16 @@ class ListingDetail extends Component {
   }
 
   componentDidMount() {
-    console.log('fetching chats')
-    this.props.fetchChats({ userID: this.props.user.id })
+    console.log('fetching chats for:')
+    console.log(this.props.user)
+    this.props.fetchChats(this.props.user.id)
+    const willFocusSubscription = this.props.navigation.addListener(
+      'willFocus',
+      (payload) => {
+        this.props.fetchChats(this.props.user.id)
+      },
+    )
+    console.log('post fetch DIDMOUNT')
     console.log(this.props)
   }
 
@@ -59,8 +67,8 @@ class ListingDetail extends Component {
   render() {
     const params = this.props.navigation.state.params
     const listing = this.props.navigation.state.params.listing
-    console.log('LISTING IN RENDER PROPS')
-    console.log(this.props)
+    // console.log('LISTING IN RENDER PROPS')
+    // console.log(this.props)
     // console.log('LISTING IN RENDER STATE')
     // console.log(listing)
     return (
@@ -114,6 +122,7 @@ const mapDispatchToProps = {
   createChat,
   fetchChats,
   setChat,
+  addFriend,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListingDetail)

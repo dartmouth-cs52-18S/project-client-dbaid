@@ -105,7 +105,7 @@ export function createChat(ids) {
     //       'Content-Type': 'application/json',
     //     },
     //   }),
-    axios.post(`${ROOT_URL}/chats/`, ids.otherID, {
+    axios.post(`${ROOT_URL}/chats`, ids, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -116,7 +116,7 @@ export function createChat(ids) {
         console.log(response)
         dispatch({ type: ActionTypes.CREATE_CHAT, payload: response.data })
         // dispatch({ type: ActionTypes.CREATE_CHAT, payload: response2.data })
-        console.log('New Chats Created! NAVIGATE TO TAB')
+        console.log('New Chat Created! NAVIGATE TO TAB')
         // props.navigation.navigate('ChatDetail', { params })
       }).catch((error) => {
         console.error(error)
@@ -143,11 +143,13 @@ export function createChat(ids) {
 }
 
 
-export function fetchChats() {
+export function fetchChats(userID) {
+  console.log(`${ROOT_URL}/chats/${userID}`)
   return (dispatch) => {
     console.log('am i EVEN In THE actioN FOR FETCH..??')
     // console.log(id)
-    axios.get(`${ROOT_URL}/chats/`).then((response) => {
+
+    axios.get(`${ROOT_URL}/chats/${userID}`).then((response) => {
       console.log('fetching all chats IN ACTION')
       console.log(response.data)
       dispatch({ type: ActionTypes.GET_CHATS, payload: response.data })
@@ -233,7 +235,7 @@ export function addFriend(friendID) {
         console.log(response.data)
         dispatch({ type: ActionTypes.ADD_FRIEND, payload: response.data })
       }).catch((error) => {
-        console.log('ERROR IN FETCH CHAT')
+        console.log('ERROR IN ADD FRIENDS')
         console.error(error)
         if (error.response) {
           // The request was made and the server responded with a status code
@@ -268,7 +270,7 @@ export function getFriends() {
       },
     })
       .then((response) => {
-        console.log('ADD FRIENDS IN ACTION')
+        console.log('GET FRIENDS IN ACTION')
         console.log(response.data)
         dispatch({ type: ActionTypes.ADD_FRIEND, payload: response.data })
       }).catch((error) => {

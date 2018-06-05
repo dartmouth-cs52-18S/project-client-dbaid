@@ -39,7 +39,7 @@ class ChatDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      messages: '',
+      messages: [],
       // avatar: require('../../../../assets/profileOne.png'),
     }
 
@@ -47,26 +47,26 @@ class ChatDetail extends Component {
   }
 
   componentWillMount() {
-    this.setState({
-      messages: [
-        {
-          _id: 1,
-          text: 'Hey! When do you want to meet up?',
-          createdAt: new Date(),
-          // userID:
-          user: {
-            _id: 2,
-            listing: this.props.navigation.state.params.params.listing,
-
-            avatar: require('../../../../assets/default.png'),
-            // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
-            // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
-          },
-        },
-      ],
-    })
-    console.log('chat PROPS?')
-    console.log(this.props)
+    // this.setState({
+    //   messages: [
+    //     {
+    //       _id: 1,
+    //       text: 'Hey! When do you want to meet up?',
+    //       createdAt: new Date(),
+    //       // userID:
+    //       user: {
+    //         _id: 2,
+    //         listing: this.props.navigation.state.params.params.listing,
+    //
+    //         avatar: require('../../../../assets/default.png'),
+    //         // avatar: //this.imagePath(this.props.navigation.state.params.params.listing),
+    //         // { uri: this.props.navigation.state.params.params.listing.author.profilePic },
+    //       },
+    //     },
+    //   ],
+    // })
+    // console.log('chat PROPS?')
+    // console.log(this.props)
     this.props.fetchMessages(this.props.navigation.state.params.params.listing.author.id)
   }
 
@@ -95,8 +95,8 @@ class ChatDetail extends Component {
   // }
 
   render() {
-    console.log('chat listing?')
-    console.log(this.props.navigation.state.params.params)
+    // console.log('chat listing?')
+    // console.log(this.props.navigation.state.params.params)
     console.log('chat state')
     console.log(this.state)
     if (this.props == null || this.props.navigation.state.params == null) {

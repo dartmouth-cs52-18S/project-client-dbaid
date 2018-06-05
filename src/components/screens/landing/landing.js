@@ -70,8 +70,8 @@ class Landing extends Component {
         <View />
       )
     }
-    console.log('listings on landing')
-    console.log(this.props.listings)
+    // console.log('listings on landing')
+    // console.log(this.props.listings)
     return (
       <ScrollView style={styles.flatlist}>
         <View style={styles.bar}>
