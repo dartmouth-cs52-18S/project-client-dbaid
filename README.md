@@ -2,9 +2,7 @@
 
 ## Attribution
 
-DBAid is an app designed to optimize the use of DBA at Dartmouth College. Users can post a listing for a certain amount of DBA that they are willing to donate at a specific dining hall. Other users can spawn a chat based on that listing and communicate about making the transaction.
-
-INCLUDE SCREENSHOTS WHEN DONE
+DBAid is an app designed to optimize the use of DBA at Dartmouth College. Users can post a listing for a certain amount of DBA that they are willing to donate at a specific dining hall. Other users can spawn a chat based on that listing and communicate about making the transaction. GIFs of functionality attached.
 
 ## Architecture
 
